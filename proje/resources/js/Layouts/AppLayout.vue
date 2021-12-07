@@ -23,6 +23,31 @@
                                     Dashboard
                                 </jet-nav-link>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('news')" :active="route().current('news')">
+                                    News
+                                </jet-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('rooms')" :active="route().current('rooms')">
+                                    Rooms
+                                </jet-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('changerequest')" :active="route().current('changerequest')">
+                                    Change Request
+                                </jet-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('myroom')" :active="route().current('myroom')">
+                                    My Room
+                                </jet-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('messages')" :active="route().current('messages')">
+                                    Messages
+                                </jet-nav-link>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

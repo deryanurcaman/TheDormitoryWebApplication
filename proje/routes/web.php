@@ -27,3 +27,25 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/news', function () {
+    return Inertia::render('News');
+})->name('news');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/rooms', function () {
+    return Inertia::render('Rooms');
+})->name('rooms');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/changerequest', function () {
+    return Inertia::render('ChangeRequest');
+})->name('changerequest');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/myroom', function () {
+    return Inertia::render('MyRoom');
+})->name('myroom');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/messages', function () {
+    return Inertia::render('Messages');
+})->name('messages');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

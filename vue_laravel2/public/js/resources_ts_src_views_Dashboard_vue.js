@@ -3057,101 +3057,16 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "row gy-5 g-xl-8"
 };
-var _hoisted_2 = {
-  "class": "col-xxl-4"
-};
-var _hoisted_3 = {
-  "class": "col-xxl-4"
-};
-var _hoisted_4 = {
-  "class": "col-xxl-4"
-};
-var _hoisted_5 = {
-  "class": "row gy-5 gx-xl-8"
-};
-var _hoisted_6 = {
-  "class": "col-xxl-4"
-};
-var _hoisted_7 = {
-  "class": "col-xxl-8"
-};
-var _hoisted_8 = {
-  "class": "row gy-5 g-xl-8"
-};
-var _hoisted_9 = {
-  "class": "col-xxl-4"
-};
-var _hoisted_10 = {
-  "class": "col-xxl-4"
-};
-var _hoisted_11 = {
-  "class": "col-xxl-4"
-};
-var _hoisted_12 = {
-  "class": "row g-5 gx-xxl-8"
-};
-var _hoisted_13 = {
-  "class": "col-xxl-4"
-};
-var _hoisted_14 = {
-  "class": "col-xxl-8"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_MixedWidget2 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MixedWidget2");
 
-  var _component_ListWidget5 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ListWidget5");
-
-  var _component_MixedWidget7 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MixedWidget7");
-
-  var _component_MixedWidget10 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MixedWidget10");
-
-  var _component_ListWidget3 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ListWidget3");
-
-  var _component_TableWidget9 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TableWidget9");
-
-  var _component_ListWidget2 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ListWidget2");
-
-  var _component_ListWidget6 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ListWidget6");
-
-  var _component_ListWidget1 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ListWidget1");
-
-  var _component_MixedWidget5 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MixedWidget5");
-
-  var _component_TableWidget5 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TableWidget5");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Dashboard"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MixedWidget2, {
-    "widget-classes": "card-xl-stretch mb-xl-8",
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("begin::Dashboard"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MixedWidget2, {
+    "widget-classes": "card-xl-stretch mb-xl-18",
     "widget-color": "danger",
     "chart-height": "200",
     "stroke-color": "#cb1e46"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ListWidget5, {
-    "widget-classes": "card-xxl-stretch mb-5 mb-xl-10"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MixedWidget7, {
-    "widget-classes": "card-xxl-stretch-50 mb-5 mb-xl-8",
-    "chart-color": "primary",
-    "chart-height": "150"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MixedWidget10, {
-    "widget-classes": "card-xxl-stretch-50 mb-5 mb-xl-8",
-    "chart-color": "primary",
-    "chart-height": "168"
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ListWidget3, {
-    "widget-classes": "card-xxl-stretch mb-xl-3"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TableWidget9, {
-    "widget-classes": "card-xxl-stretch mb-5 mb-xl-8"
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ListWidget2, {
-    "widget-classes": "card-xl-stretch mb-xl-8"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ListWidget6, {
-    "widget-classes": "card-xl-stretch mb-xl-8"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ListWidget1, {
-    "widget-classes": "card-xxl-stretch mb-xl-3"
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MixedWidget5, {
-    "widget-classes": "card-xl-stretch mb-xl-8",
-    "chart-color": "success",
-    "chart-height": "150"
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TableWidget5, {
-    "widget-classes": "card-xxl-stretch mb-5 mb-xxl-8"
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Dashboard")], 64
-  /* STABLE_FRAGMENT */
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("end::Dashboard")], 2112
+  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
   );
 }
 

@@ -2,9 +2,13 @@
     <Head title="Log in" />
 
     <jet-authentication-card>
-        <template #logo>
+        <p style="text-align:center"> <b>LOGIN</b>
+            </p>
+            <template #logo>
             <jet-authentication-card-logo />
         </template>
+        <!-- <img src="https://img.icons8.com/ios-filled/50/000000/keys-holder.png" width="100" height="100" class="center" alt=""> -->
+        
 
         <jet-validation-errors class="mb-4" />
 
@@ -31,9 +35,9 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Forgot your password?
-                </Link>
+                <!-- <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                    Don't you have an account?
+                </Link> -->
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
@@ -96,3 +100,18 @@
         }
     })
 </script>
+
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+p {
+  font-size: 40px;
+  color: rgb(97, 97, 163);
+  
+}
+</style>

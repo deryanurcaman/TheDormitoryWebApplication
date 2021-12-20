@@ -1,4 +1,46 @@
 const DocMenuConfig = [
+
+  {
+    pages: [
+      {
+        heading: "Dashboard",
+        route: "/dashboard",
+        svgIcon: "media/icons/duotune/art/art002.svg",
+        fontIcon: "bi-app-indicator",
+      },
+      {
+        heading: "News",
+        route: "/news",
+        svgIcon: "media/icons/duotune/general/gen019.svg",
+        fontIcon: "bi-layers",
+      },
+      {
+        heading: "Rooms",
+        route: "/rooms",
+        svgIcon: "media/icons/duotune/general/gen019.svg",
+        fontIcon: "bi-layers",
+      },
+      {
+        heading: "Change Request",
+        route: "/changerequest",
+        svgIcon: "media/icons/duotune/general/gen019.svg",
+        fontIcon: "bi-layers",
+      },
+      {
+        heading: "My Room",
+        route: "/myroom",
+        svgIcon: "media/icons/duotune/general/gen019.svg",
+        fontIcon: "bi-layers",
+      },
+      {
+        heading: "Messages",
+        route: "/messages",
+        svgIcon: "media/icons/duotune/general/gen019.svg",
+        fontIcon: "bi-layers",
+      },
+    ],
+  },
+
   {
     pages: [
       {

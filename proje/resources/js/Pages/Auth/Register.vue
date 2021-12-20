@@ -2,6 +2,8 @@
     <Head title="Register" />
 
     <jet-authentication-card>
+        <p style="text-align:center"> <b>REGISTER</b>
+            </p>
         <template #logo>
             <jet-authentication-card-logo />
         </template>
@@ -99,3 +101,18 @@
         }
     })
 </script>
+
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+p {
+  font-size: 40px;
+  color: rgb(97, 97, 163);
+  
+}
+</style>

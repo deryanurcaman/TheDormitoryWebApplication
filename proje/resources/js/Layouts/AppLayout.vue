@@ -23,29 +23,54 @@
                                     Dashboard
                                 </jet-nav-link>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('news')" :active="route().current('news')">
                                     News
                                 </jet-nav-link>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('rooms')" :active="route().current('rooms')">
                                     Rooms
                                 </jet-nav-link>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('changerequest')" :active="route().current('changerequest')">
                                     Room Request
                                 </jet-nav-link>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('myroom')" :active="route().current('myroom')">
                                     My Room
                                 </jet-nav-link>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('messages')" :active="route().current('messages')">
                                     Messages
+                                </jet-nav-link>
+                            </div>
+                            <div v-if="$page.props.user.role == 'personnel'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('sharenews')" :active="route().current('sharenews')">
+                                    Share News
+                                </jet-nav-link>
+                            </div>
+                            <div v-if="$page.props.user.role == 'personnel'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('sharerooms')" :active="route().current('sharerooms')">
+                                    Share Rooms
+                                </jet-nav-link>
+                            </div>
+                            <div v-if="$page.props.user.role == 'personnel'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('studentsinrooms')" :active="route().current('studentsinrooms')">
+                                    Students In Rooms
+                                </jet-nav-link>
+                            </div>
+                            <div v-if="$page.props.user.role == 'personnel'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('payments')" :active="route().current('payments')">
+                                    Payments
+                                </jet-nav-link>
+                            </div>
+                            <div v-if="$page.props.user.role == 'personnel'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('personnelmessages')" :active="route().current('personnelmessages')">
+                                    Personnel Messages
                                 </jet-nav-link>
                             </div>
                         </div>

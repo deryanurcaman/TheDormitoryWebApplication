@@ -46,16 +46,39 @@
                     New Apply / Change Request
                   </label>
                   <div class="space-y-5">
-      <div v-for="plan in plans" :key="plan.id" class="relative flex items-start">
-        <div class="flex items-center h-5">
-          <input :id="plan.id" :aria-describedby="`${plan.id}-description`" name="plan" type="radio" :checked="plan.id === 'small'" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300" />
-        </div>
-        <div class="ml-3 text-sm">
-          <label :for="plan.id" class="font-medium text-gray-700">{{ plan.name }}</label>
-          <p :id="`${plan.id}-description`" class="text-gray-500">{{ plan.description }}</p>
-        </div>
-      </div>
-    </div>
+                    <div
+                      v-for="plan in plans"
+                      :key="plan.id"
+                      class="relative flex items-start"
+                    >
+                      <div class="flex items-center h-5">
+                        <input
+                          :id="plan.id"
+                          :aria-describedby="`${plan.id}-description`"
+                          name="plan"
+                          type="radio"
+                          :checked="plan.id === 'small'"
+                          class="
+                            focus:ring-indigo-500
+                            h-4
+                            w-4
+                            text-indigo-600
+                            border-gray-300
+                          "
+                        />
+                      </div>
+                      <div class="ml-3 text-sm">
+                        <label
+                          :for="plan.id"
+                          class="font-medium text-gray-700"
+                          >{{ plan.name }}</label
+                        >
+                        <p :id="`${plan.id}-description`" class="text-gray-500">
+                          {{ plan.description }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div
@@ -146,33 +169,11 @@
                 </div>
               </div>
             </div>
-
-            
           </div>
 
           <div class="pt-5">
             <div class="flex justify-end">
-              <button
-                type="button"
-                class="
-                  bg-white
-                  py-2
-                  px-4
-                  border border-gray-300
-                  rounded-md
-                  shadow-sm
-                  text-sm
-                  font-medium
-                  text-gray-700
-                  hover:bg-gray-50
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-offset-2
-                  focus:ring-indigo-500
-                "
-              >
-                Cancel
-              </button>
+              
               <button
                 type="submit"
                 class="
@@ -211,8 +212,35 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
 
 const plans = [
-  { id: 'new', name: 'New Apply', description: 'If you apply for a room for the first time, choose this' },
-  { id: 'change', name: 'Change Request', description: 'If you want to change your room, choose this' },
+  {
+    id: "new",
+    name: "New Apply",
+    description: "If you apply for a room for the first time, choose this",
+  },
+  {
+    id: "change",
+    name: "Change Request",
+    description: "If you want to change your room, choose this",
+  },
+];
+
+const people = [
+  {
+    title: "3rd Floor Renovation",
+    description:
+      "The renovation on the 3rd floor of the dormitory continues. Students are kindly requested not to visit this floor during the renovations to be made until Monday, 26.12.2021.",
+    date: "20.12.2021 Tuesday",
+    imageUrl:
+      "https://cdn-icons.flaticon.com/png/512/2692/premium/2692815.png?token=exp=1638886550~hmac=124e69e141b0103823c30695207c71be",
+  },
+  {
+    title: "Due Date of Fees",
+    description:
+      "The deadline for dormitory payments is 01.01.2022. It is announced to our students who do not pay.",
+    date: "23.12.2021 Tuesday",
+    imageUrl:
+      "https://cdn-icons.flaticon.com/png/512/2692/premium/2692815.png?token=exp=1638886550~hmac=124e69e141b0103823c30695207c71be",
+  },
 ];
 
 export default defineComponent({
@@ -223,6 +251,7 @@ export default defineComponent({
   setup() {
     return {
       plans,
+      people,
     };
   },
 });

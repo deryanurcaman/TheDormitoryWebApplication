@@ -45,10 +45,10 @@
       </div> -->
       <div class="mt-4">
         <jet-label for="role" value="Role" />
-                <x-jet-label for="role_id" value="{{ __('Register as:') }}" />
-                <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                    <option value="2">Student</option>
-                    <option value="3">Personnel</option>
+                <x-jet-label for="role" value="role" />
+                <select id="role" name="role" v-model="form.role" x-model="role" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                    <option value="student">Student</option>
+                    <option value="personnel">Personnel</option>
                 </select>
             </div>
       <div class="mt-4">
@@ -194,6 +194,7 @@ export default defineComponent({
         name: "",
         surname: "",
         email: "",
+        role: "",
         password: "",
         password_confirmation: "",
         terms: false,

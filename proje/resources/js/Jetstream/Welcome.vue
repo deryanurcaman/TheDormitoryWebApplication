@@ -7,8 +7,8 @@
     <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
       <div class="p-6">
         <div class="ml-12">
-          <div class="mt-2 text-xl text-gray-500">NEWS</div>
-
+          <div v-if="$page.props.user.role == 'student'" class="mt-2 text-xl text-gray-500">NEWS</div>
+          <div v-if="$page.props.user.role == 'personnel'" class="mt-2 text-xl text-gray-500">SHARE NEWS</div>
           <a href="https://laravel.com/docs">
             <div
               class="
@@ -36,7 +36,8 @@
 
       <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
         <div class="ml-12">
-          <div class="mt-2 text-xl text-gray-500">ROOMS</div>
+          <div v-if="$page.props.user.role == 'student'" class="mt-2 text-xl text-gray-500">ROOMS</div>
+          <div v-if="$page.props.user.role == 'personnel'" class="mt-2 text-xl text-gray-500">SHARE ROOMS</div>
 
           <a href="https://laravel.com/docs">
             <div
@@ -65,7 +66,8 @@
 
       <div class="p-6 border-t border-gray-200">
         <div class="ml-12">
-          <div class="mt-2 text-xl text-gray-500">ROOM REQUEST</div>
+          <div v-if="$page.props.user.role == 'student'" class="mt-2 text-xl text-gray-500">ROOM REQUEST</div>
+          <div v-if="$page.props.user.role == 'personnel'" class="mt-2 text-xl text-gray-500">STUDENTS IN ROOMS</div>
 
           <a href="https://laravel.com/docs">
             <div
@@ -94,7 +96,8 @@
 
       <div class="p-6 border-t border-gray-200 md:border-l">
         <div class="ml-12">
-          <div class="mt-2 text-xl text-gray-500">MY ROOM</div>
+          <div v-if="$page.props.user.role == 'student'" class="mt-2 text-xl text-gray-500">MY ROOM</div>
+          <div v-if="$page.props.user.role == 'personnel'" class="mt-2 text-xl text-gray-500">PAYMENTS</div>
 
           <a href="https://laravel.com/docs">
             <div

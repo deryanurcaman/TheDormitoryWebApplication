@@ -1,14 +1,15 @@
 <template>
-  <div>
-    <app-layout title="Dashboard">
-      <template #header>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Rooms</h2>
-      </template>
+  <app-layout title="Dashboard">
+    <template #header>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        Payments
+      </h2>
+    </template>
 
-      <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <!-- This example requires Tailwind CSS v2.0+ -->
+    <div class="py-12">
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <form class="space-y-8 divide-y divide-gray-200">
+          <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
             <div class="flex flex-col">
               <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div
@@ -44,7 +45,7 @@
                               tracking-wider
                             "
                           >
-                            Name
+                            Student Name
                           </th>
                           <th
                             scope="col"
@@ -58,7 +59,7 @@
                               tracking-wider
                             "
                           >
-                            Capacity
+                            Room
                           </th>
                           <th
                             scope="col"
@@ -72,8 +73,9 @@
                               tracking-wider
                             "
                           >
-                            Fee
+                            Status
                           </th>
+
                           <th
                             scope="col"
                             class="
@@ -86,7 +88,7 @@
                               tracking-wider
                             "
                           >
-                            Occupancy
+                            <span class="sr-only">Charge</span>
                           </th>
                         </tr>
                       </thead>
@@ -96,26 +98,20 @@
                             <div class="flex items-center">
                               <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-900">
-                                  Room 1
+                                  Derya
                                 </div>
                               </div>
                             </div>
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              1 People
-                            </span>
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm text-gray-500
+                            "
+                          >
+                            Room 5
                           </td>
                           <td
                             class="
@@ -125,8 +121,9 @@
                               text-sm text-gray-500
                             "
                           >
-                            130$ per month
+                            Payment Successful
                           </td>
+
                           <td
                             class="
                               px-6
@@ -135,7 +132,10 @@
                               text-sm text-gray-500
                             "
                           >
-                            No Space
+                            <a
+                              href="#"
+                              class="text-indigo-600 hover:text-indigo-900"
+                            ></a>
                           </td>
                         </tr>
 
@@ -147,151 +147,45 @@
                             <div class="flex items-center">
                               <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-900">
-                                  Room 2
+                                  Derya
                                 </div>
                               </div>
                             </div>
                           </td>
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm text-gray-500
+                            "
+                          >
+                            Room 5
+                          </td>
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm text-gray-500
+                            "
+                          >
+                            Payment Not Charged
+                          </td>
 
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm text-gray-500
+                            "
+                          >
+                            <a
+                              href="#"
+                              class="text-indigo-600 hover:text-indigo-900"
+                              >Charge</a
                             >
-                              3 People
-                            </span>
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            250$ per month
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            1/3 People
-                          </td>
-                        </tr>
-
-                        <!-- More people... -->
-                      </tbody>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Room 3
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              2 People
-                            </span>
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            180$ per month
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            1/2 People
-                          </td>
-                        </tr>
-
-                        <!-- More people... -->
-                      </tbody>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Room 4
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              4 People
-                            </span>
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            100$ per month
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            2/4 People
                           </td>
                         </tr>
 
@@ -303,11 +197,10 @@
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
-    </app-layout>
-    <button class="btn"></button>
-  </div>
+    </div>
+  </app-layout>
 </template>
 
 <script>
@@ -315,10 +208,21 @@ import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
 
+const people = [
+  { name: "News1", title: "Regional Paradigm Technician", date: "10.12.2021" },
+  { name: "News2", title: "Product Directives Officer", date: "13.12.2021" },
+  { name: "News3", title: "Officer Change", date: "08.11.2021" },
+  // More people...
+];
 export default defineComponent({
   components: {
     AppLayout,
     Welcome,
+  },
+  setup() {
+    return {
+      people,
+    };
   },
 });
 </script>

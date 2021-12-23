@@ -50,5 +50,31 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/messages', function () {
     return Inertia::render('Messages');
 })->name('messages');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/sharenews', function () {
+    return Inertia::render('ShareNews');
+})->name('sharenews');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/studentsinrooms', function () {
+    return Inertia::render('StudentsInRooms');
+})->name('studentsinrooms');
+
+
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/sharerooms', function () {
+    return Inertia::render('ShareRooms');
+})->name('sharerooms');
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/payments', function () {
+    return Inertia::render('Payments');
+})->name('payments');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/personnelmessages', function () {
+    return Inertia::render('PersonnelMessages');
+})->name('personnelmessages');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -29,6 +29,8 @@
         "vue-loader": "^16.1.2"
     },
     "dependencies": {
-        "@mdi/font": "^6.5.95"
+        "@mdi/font": "^6.5.95",
+        "@themesberg/flowbite": "^1.2.0",
+        "daisyui": "^1.19.0"
     }
 }

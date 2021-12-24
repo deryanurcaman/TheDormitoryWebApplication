@@ -24,12 +24,12 @@
                                 </jet-nav-link>
                             </div>
                             <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('news')" :active="route().current('news')">
+                                <jet-nav-link :href="route('news.index')" :active="route().current('news.index')">
                                     News
                                 </jet-nav-link>
                             </div>
                             <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('rooms')" :active="route().current('rooms')">
+                                <jet-nav-link :href="route('rooms.index')" :active="route().current('rooms.index')">
                                     Rooms
                                 </jet-nav-link>
                             </div>

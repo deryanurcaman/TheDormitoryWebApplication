@@ -21,8 +21,8 @@
               "
             >
               <li
-                v-for="person in people"
-                :key="person.email"
+                v-for="person in news"
+                :key="person.title"
                 class="
                   col-span-1
                   flex flex-col
@@ -36,7 +36,7 @@
                 <div class="flex-1 flex flex-col p-8">
                   <img
                     class="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
-                    :src="person.imageUrl"
+                    src="https://cdn-icons.flaticon.com/png/512/826/premium/826054.png?token=exp=1640260703~hmac=53bbfcc3ad6f82c2d04031de08083b5c"
                     alt=""
                   />
                   <h2 class="mt-6 text-gray-900 text-xl font-medium">
@@ -78,32 +78,32 @@
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
-const people = [
-  {
-    title: "3rd Floor Renovation",
-    description:
-      "The renovation on the 3rd floor of the dormitory continues. Students are kindly requested not to visit this floor during the renovations to be made until Monday, 26.12.2021.",
-    date: "20.12.2021 Tuesday",
-    imageUrl:
-      "https://cdn-icons.flaticon.com/png/512/2692/premium/2692815.png?token=exp=1638886550~hmac=124e69e141b0103823c30695207c71be",
-  },
-  {
-    title: "Due Date of Fees",
-    description:
-      "The deadline for dormitory payments is 01.01.2022. It is announced to our students who do not pay.",
-    date: "23.12.2021 Tuesday",
-    imageUrl:
-      "https://cdn-icons.flaticon.com/png/512/2692/premium/2692815.png?token=exp=1638886550~hmac=124e69e141b0103823c30695207c71be",
-  },
-];
+// const people = [
+//   {
+//     title: "3rd Floor Renovation",
+//     description:
+//       "The renovation on the 3rd floor of the dormitory continues. Students are kindly requested not to visit this floor during the renovations to be made until Monday, 26.12.2021.",
+//     date: "20.12.2021 Tuesday",
+//     imageUrl:
+//       "https://cdn-icons.flaticon.com/png/512/2692/premium/2692815.png?token=exp=1638886550~hmac=124e69e141b0103823c30695207c71be",
+//   },
+//   {
+//     title: "Due Date of Fees",
+//     description:
+//       "The deadline for dormitory payments is 01.01.2022. It is announced to our students who do not pay.",
+//     date: "23.12.2021 Tuesday",
+//     imageUrl:
+//       "https://cdn-icons.flaticon.com/png/512/2692/premium/2692815.png?token=exp=1638886550~hmac=124e69e141b0103823c30695207c71be",
+//   },
+// ];
 export default defineComponent({
+  props: ["news"],
   components: {
     AppLayout,
     Welcome,
   },
   setup() {
     return {
-      people,
     };
   },
 });

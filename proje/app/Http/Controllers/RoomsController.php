@@ -25,14 +25,18 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'room_name' => 'required',
+            'name' => 'required',
+            'capacity' => 'required',
+            'fee' => 'required',
         ]);
 
         $room = new Room();
-        $room->room_name = $request->room_name;
+        $room->name = $request->name;
+        $room->capacity = $request->capacity;
+        $room->fee = $request->fee;
         $room->save();
 
-        return response('Succesfully created a new Room', 200);
+        return response('Succesfully created a new room', 200);
     }
 
     /**
@@ -56,14 +60,18 @@ class RoomsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'room_name' => 'required',
+            'name' => 'required',
+            'capacity' => 'required',
+            'fee' => 'required',
         ]);
 
         $room = Room::find($id);
-        $room->room_name = $request->room_name;
+        $room->name = $request->name;
+        $room->capacity = $request->capacity;
+        $room->fee = $request->fee;
         $room->save();
 
-        return response('Succesfully updated the Room', 200);
+        return response('Succesfully updated the room', 200);
     }
 
     /**

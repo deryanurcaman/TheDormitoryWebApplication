@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\News;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,6 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/news', function () {
     return Inertia::render('News');
 })->name('news');
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/rooms', function () {
     return Inertia::render('Rooms');
 })->name('rooms');
@@ -51,22 +53,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/messages', function () {
 })->name('messages');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/sharenews', function () {
-    return Inertia::render('ShareNews');
+    return Inertia::render('ShareNews', [
+        'news' => News::all()
+    ]);
 })->name('sharenews');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/studentsinrooms', function () {
     return Inertia::render('StudentsInRooms');
 })->name('studentsinrooms');
 
-
-
-
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/sharerooms', function () {
     return Inertia::render('ShareRooms');
 })->name('sharerooms');
-
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/payments', function () {
     return Inertia::render('Payments');
@@ -78,3 +76,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/personnelmessages', funct
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::resource('news', 'App\Http\Controllers\NewsController');
+
+Route::resource('rooms', 'App\Http\Controllers\RoomsController');

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
@@ -13,7 +13,7 @@ class PaymentsController extends Controller
      */
     public function index()
     {
-        //
+        return Payment::all();
     }
 
     /**
@@ -24,7 +24,17 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'amount' => 'required',
+            'status' => 'required',
+        ]);
+
+        $payment = new Payment();
+        $payment->amount = $request->amount;
+        $payment->sttatus = $request->sttatus;
+        $payment->save();
+
+        return response('Succesfully created a new payment', 200);
     }
 
     /**
@@ -35,7 +45,7 @@ class PaymentsController extends Controller
      */
     public function show($id)
     {
-        //
+        return Payment::find($id); 
     }
 
     /**
@@ -47,7 +57,17 @@ class PaymentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'amount' => 'required',
+            'status' => 'required',
+        ]);
+
+        $payment = Payment::find($id);
+        $payment->amount = $request->amount;
+        $payment->status = $request->status;
+        $payment->save();
+
+        return response('Succesfully updated the payment', 200);
     }
 
     /**
@@ -58,6 +78,7 @@ class PaymentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Payment::find($id)->delete();
+       return response('Succesfully deleted the Room', 200);
     }
 }

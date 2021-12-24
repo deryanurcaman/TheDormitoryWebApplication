@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Message;
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller
@@ -13,7 +13,7 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        //
+        return Message::all();
     }
 
     /**
@@ -24,7 +24,21 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'content' => 'required',
+            'receiver' => 'required',
+            'sender' => 'required',
+            'date' => 'required',
+        ]);
+
+        $message = new Message();
+        $message->content = $request->content;
+        $message->receiver = $request->receiver;
+        $message->sender = $request->sender;
+        $message->date = $request->date;
+        $message->save();
+
+        return response('Succesfully created a new message', 200);
     }
 
     /**
@@ -35,7 +49,7 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Message::find($id);
     }
 
     /**
@@ -47,7 +61,21 @@ class MessagesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'content' => 'required',
+            'receiver' => 'required',
+            'sender' => 'required',
+            'date' => 'required',
+        ]);
+
+        $message = Message::find($id);
+        $message->content = $request->content;
+        $message->receiver = $request->receiver;
+        $message->sender = $request->sender;
+        $message->date = $request->date;
+        $message->save();
+
+        return response('Succesfully updated the message', 200);
     }
 
     /**
@@ -58,6 +86,7 @@ class MessagesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Message::find($id)->delete();
+        return response('Succesfully deleted the message', 200);
     }
 }

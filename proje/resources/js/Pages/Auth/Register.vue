@@ -46,7 +46,7 @@
       <div class="mt-4">
         <jet-label for="role" value="Role" />
                 <x-jet-label for="role" value="role" />
-                <select id="role" name="role" v-model="form.role" x-model="role" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <select id="role" name="role" v-model="form.role" x-model="role" class="block mt-1 w-full text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                     <option value="student">Student</option>
                     <option value="personnel">Personnel</option>
                 </select>
@@ -56,7 +56,7 @@
         <jet-input
           id="name"
           type="text"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full text-gray-700"
           v-model="form.name"
           required
           autofocus
@@ -69,7 +69,7 @@
         <jet-input
           id="surname"
           type="text"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full text-gray-700"
           v-model="form.surname"
           required
           autofocus
@@ -82,7 +82,7 @@
         <jet-input
           id="email"
           type="email"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full text-gray-700"
           v-model="form.email"
           required
         />
@@ -93,7 +93,7 @@
         <jet-input
           id="password"
           type="password"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full text-gray-700"
           v-model="form.password"
           required
           autocomplete="new-password"
@@ -105,7 +105,7 @@
         <jet-input
           id="password_confirmation"
           type="password"
-          class="mt-1 block w-full"
+          class="mt-1 block w-full text-gray-700"
           v-model="form.password_confirmation"
           required
           autocomplete="new-password"

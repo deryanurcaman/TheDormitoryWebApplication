@@ -22,149 +22,11 @@
                     lg:px-8
                   "
                 >
-                  <div
-                    class="
-                      shadow
-                      overflow-hidden
-                      border-b border-gray-200
-                      sm:rounded-lg
-                    "
-                  >
-                    <table class="min-w-full divide-y divide-gray-200">
-                      <thead class="bg-gray-50">
-                        <tr>
-                          <th
-                            scope="col"
-                            class="
-                              px-6
-                              py-3
-                              text-left text-xs
-                              font-medium
-                              text-gray-500
-                              uppercase
-                              tracking-wider
-                            "
-                          >
-                            Name
-                          </th>
-                          <th
-                            scope="col"
-                            class="
-                              px-6
-                              py-3
-                              text-left text-xs
-                              font-medium
-                              text-gray-500
-                              uppercase
-                              tracking-wider
-                            "
-                          >
-                            Title
-                          </th>
-                          <th
-                            scope="col"
-                            class="
-                              px-6
-                              py-3
-                              text-left text-xs
-                              font-medium
-                              text-gray-500
-                              uppercase
-                              tracking-wider
-                            "
-                          >
-                            Date
-                          </th>
-                          <th scope="col" class="relative px-6 py-3">
-                            <span class="sr-only">Delete</span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr
-                          v-for="(person, personIdx) in people"
-                          :key="person.email"
-                          :class="
-                            personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
-                          "
-                        >
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm
-                              font-medium
-                              text-gray-900
-                            "
-                          >
-                            {{ person.name }}
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            {{ person.title }}
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            {{ person.date }}
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-right text-sm
-                              font-medium
-                            "
-                          >
-                            <a
-                              href="#"
-                              class="text-indigo-600 hover:text-indigo-900"
-                              >Delete</a
-                            >
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <form class="space-y-8 divide-y divide-gray-200">
-          <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-            <div class="flex flex-col">
-              <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div
-                  class="
-                    py-2
-                    align-middle
-                    inline-block
-                    min-w-full
-                    sm:px-6
-                    lg:px-8
-                  "
-                >
                   <div class="overflow-hidden sm:rounded-lg">
-                    <form class="space-y-8 divide-y divide-gray-200">
+                    <form
+                      @submit.prevent="submit"
+                      class="space-y-8 divide-y divide-gray-200"
+                    >
                       <div class="space-y-8 divide-y divide-gray-200">
                         <div>
                           <div>
@@ -193,17 +55,18 @@
                           >
                             <div class="sm:col-span-4">
                               <label
-                                for="username"
+                                for="title"
                                 class="block text-sm font-medium text-gray-700"
                               >
                                 Title
                               </label>
                               <div class="mt-1 flex rounded-md shadow-sm">
                                 <input
+                                  v-model="form.title"
                                   type="text"
-                                  name="username"
-                                  id="username"
-                                  autocomplete="username"
+                                  name="title"
+                                  id="title"
+                                  autocomplete="title"
                                   class="
                                     flex-1
                                     focus:ring-indigo-500
@@ -214,6 +77,7 @@
                                     rounded-none rounded-r-md
                                     sm:text-sm
                                     border-gray-300
+                                    text-gray-700
                                   "
                                 />
                               </div>
@@ -227,6 +91,7 @@
                               </label>
                               <div class="mt-1 flex rounded-md shadow-sm">
                                 <input
+                                  v-model="form.date"
                                   type="text"
                                   name="username"
                                   id="username"
@@ -241,6 +106,7 @@
                                     rounded-none rounded-r-md
                                     sm:text-sm
                                     border-gray-300
+                                    text-gray-700
                                   "
                                 />
                               </div>
@@ -255,6 +121,7 @@
                               </label>
                               <div class="mt-1">
                                 <textarea
+                                  v-model="form.description"
                                   id="about"
                                   name="about"
                                   rows="3"
@@ -267,6 +134,7 @@
                                     sm:text-sm
                                     border border-gray-300
                                     rounded-md
+                                    text-gray-700
                                   "
                                 />
                               </div>
@@ -277,30 +145,13 @@
 
                       <div class="pt-5">
                         <div class="flex justify-end">
-                          <button
-                            type="submit"
-                            class="
-                              ml-3
-                              inline-flex
-                              justify-center
-                              py-2
-                              px-4
-                              border border-transparent
-                              shadow-sm
-                              text-sm
-                              font-medium
-                              rounded-md
-                              text-white
-                              bg-indigo-600
-                              hover:bg-indigo-700
-                              focus:outline-none
-                              focus:ring-2
-                              focus:ring-offset-2
-                              focus:ring-indigo-500
-                            "
+                          <jet-button
+                            class="ml-4"
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
                           >
                             Share
-                          </button>
+                          </jet-button>
                         </div>
                       </div>
                     </form>
@@ -312,6 +163,85 @@
         </form>
       </div>
     </div>
+
+    <div class="py-12">
+      <!-- <h2 class=" mx-auto text-gray-700">DENEME</h2> -->
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <h1 class="text-lg leading-6 font-medium text-gray-900">All News</h1>
+        <p class="mt-1 text-sm text-gray-500 mb-4">
+          You can see all news here.
+        </p>
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+          <!-- This example requires Tailwind CSS v2.0+ -->
+
+          <ul
+            role="list"
+            class="
+              grid grid-cols-1
+              gap-6
+              sm:grid-cols-2
+              md:grid-cols-3
+              lg:grid-cols-4
+            "
+          >
+            <li
+              v-for="person in news"
+              :key="person.title"
+              class="
+                col-span-1
+                flex flex-col
+                text-center
+                bg-white
+                rounded-lg
+                shadow
+                divide-y divide-gray-200
+              "
+            >
+              <div class="flex-1 flex flex-col p-8">
+                <img
+                  class="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
+                  src="https://cdn-icons.flaticon.com/png/512/826/premium/826054.png?token=exp=1640260703~hmac=53bbfcc3ad6f82c2d04031de08083b5c"
+                  alt=""
+                />
+                <h2 class="mt-6 text-gray-900 text-xl font-medium">
+                  {{ person.title }}
+                </h2>
+                <dl class="mt-1 flex-grow flex flex-col justify-between">
+                  <dt class="sr-only">Title</dt>
+                  <dd class="text-gray-500 text-sm">
+                    {{ person.description }}
+                  </dd>
+                  <dt class="sr-only">Role</dt>
+                  <dd class="mt-3">
+                    <span
+                      class="
+                        px-2
+                        py-1
+                        text-green-800 text-xs
+                        font-medium
+                        bg-green-100
+                        rounded-full
+                      "
+                      >{{ person.date }}</span
+                    >
+                  </dd>
+                  <dt class="sr-only">Role</dt>
+                  <dd class="mt-3">
+                    <jet-button @click="deleteData(person)"
+                      :class="{ 'opacity-25': form.processing }"
+                      :disabled="form.processing"
+                    >
+                      Delete
+                    </jet-button>
+                  </dd>
+                </dl>
+              </div>
+              <div></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </app-layout>
 </template>
 
@@ -319,23 +249,42 @@
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
-import '@themesberg/flowbite';
+import "@themesberg/flowbite";
+import { Head, Link } from "@inertiajs/inertia-vue3";
+import JetButton from "@/Jetstream/Button.vue";
 
-const people = [
-  { name: "News1", title: "Regional Paradigm Technician", date: "10.12.2021" },
-  { name: "News2", title: "Product Directives Officer", date: "13.12.2021" },
-  { name: "News3", title: "Officer Change", date: "08.11.2021" },
-  // More people...
-];
+// const people = [
+//   { name: "News1", title: "Regional Paradigm Technician", date: "10.12.2021" },
+//   { name: "News2", title: "Product Directives Officer", date: "13.12.2021" },
+//   { name: "News3", title: "Officer Change", date: "08.11.2021" },
+//   // More people...
+// ];
 export default defineComponent({
+  props: ["news"],
   components: {
+    Head,
+    Link,
     AppLayout,
     Welcome,
+    JetButton,
   },
-  setup() {
+  data() {
     return {
-      people,
+      // people,
+      form: this.$inertia.form({
+        title: "",
+        description: "",
+        date: "",
+      }),
     };
+  },
+  methods: {
+    submit() {
+      this.form.post(this.route("news.store"));
+    },
+    deleteData(data) {
+      this.form.post(this.route("news.destroy" + data.id));
+    },
   },
 });
 </script>

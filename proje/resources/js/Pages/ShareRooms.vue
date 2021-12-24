@@ -7,10 +7,6 @@
     </template>
 
 
-<button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Cyan</button>
-
-
-
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <form class="space-y-8 divide-y divide-gray-200">
@@ -409,7 +405,8 @@
                                 text-lg
                                 leading-6
                                 font-medium
-                                text-gray-900
+                                text-black-900
+                                text-gray-700
                               "
                             >
                               Add A New Room
@@ -434,7 +431,7 @@
                               >
                                 Name
                               </label>
-                              <div class="mt-1 flex rounded-md shadow-sm">
+                              <div class="mt-1 flex rounded-md shadow-sm text-gray-700">
                                 <input
                                   type="text"
                                   name="username"
@@ -461,7 +458,7 @@
                               >
                                 Capacity
                               </label>
-                              <div class="mt-1 flex rounded-md shadow-sm">
+                              <div class="mt-1 flex rounded-md shadow-sm text-gray-700">
                                 <input
                                   type="text"
                                   name="username"
@@ -488,7 +485,7 @@
                               >
                                 Fee
                               </label>
-                              <div class="mt-1 flex rounded-md shadow-sm">
+                              <div class="mt-1 flex rounded-md shadow-sm text-gray-700">
                                 <input
                                   type="text"
                                   name="username"

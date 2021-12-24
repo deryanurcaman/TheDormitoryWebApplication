@@ -62,6 +62,7 @@
                               </label>
                               <div class="mt-1 flex rounded-md shadow-sm">
                                 <input
+                                  required
                                   v-model="form.title"
                                   type="text"
                                   name="title"
@@ -91,6 +92,7 @@
                               </label>
                               <div class="mt-1 flex rounded-md shadow-sm">
                                 <input
+                                  required
                                   v-model="form.date"
                                   type="text"
                                   name="username"
@@ -121,6 +123,7 @@
                               </label>
                               <div class="mt-1">
                                 <textarea
+                                  required
                                   v-model="form.description"
                                   id="about"
                                   name="about"

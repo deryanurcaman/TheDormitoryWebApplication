@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\News;
+use App\Models\Room;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -63,7 +64,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/studentsinrooms', functio
 })->name('studentsinrooms');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/sharerooms', function () {
-    return Inertia::render('ShareRooms');
+    return Inertia::render('ShareRooms',  [
+        'rooms' => Room::all()
+    ]);
 })->name('sharerooms');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/payments', function () {

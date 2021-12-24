@@ -115,7 +115,7 @@
                     >
                       Select a Student
                     </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div class="mt-1 sm:mt-0 sm:col-span-2 text-gray-700">
                       <select
                         id="country"
                         name="country"
@@ -147,7 +147,7 @@
                     >
                       Write a Message
                     </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div class="mt-1 sm:mt-0 sm:col-span-2 text-gray-700">
                       <textarea
                         id="about"
                         name="about"

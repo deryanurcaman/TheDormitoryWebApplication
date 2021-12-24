@@ -46,7 +46,7 @@
       <div class="mt-4">
         <jet-label for="role" value="Role" />
                 <x-jet-label for="role" value="role" />
-                <select id="role" name="role" v-model="form.role" x-model="role" class="block mt-1 w-full text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <select id="role" name="role" required v-model="form.role" x-model="role" class="block mt-1 w-full text-gray-700 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                     <option value="student">Student</option>
                     <option value="personnel">Personnel</option>
                 </select>

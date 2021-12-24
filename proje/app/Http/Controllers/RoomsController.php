@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+
 
 class RoomsController extends Controller
 {
@@ -13,7 +15,9 @@ class RoomsController extends Controller
      */
     public function index()
     {
-        return Room::all();
+        return Inertia::render('Room', [
+            'room' => Room::all()
+        ]);
     }
 
     /**

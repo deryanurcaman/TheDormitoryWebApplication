@@ -110,6 +110,7 @@
                       name="country"
                       autocomplete="country-name"
                       class="
+                        text-gray-700
                         max-w-lg
                         block
                         focus:ring-indigo-500 focus:border-indigo-500
@@ -155,6 +156,7 @@
                       name="about"
                       rows="3"
                       class="
+                        text-gray-700
                         max-w-lg
                         shadow-sm
                         block

@@ -2,9 +2,13 @@
 
 use App\Models\News;
 use App\Models\Room;
+use App\Models\Post;
+use App\Http\Controllers\PostsController;
+
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +73,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/sharerooms', function () 
     ]);
 })->name('sharerooms');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/posts', function () {
+    return Inertia::render('Posts',  [
+        'posts' => Post::all()
+    ]);
+})->name('posts');
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/payments', function () {
     return Inertia::render('Payments');
 })->name('payments');
@@ -82,3 +93,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('news', 'App\Http\Controllers\NewsController');
 
 Route::resource('rooms', 'App\Http\Controllers\RoomsController');
+
+// Route::resource('posts', PostController::class);
+
+Route::resource('posts', 'App\Http\Controllers\PostsController');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/posts', function () {
+    return Inertia::render('Posts', [
+        'posts' => Post::all()
+    ]);
+})->name('posts');
+

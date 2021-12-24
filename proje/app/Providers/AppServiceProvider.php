@@ -1,12 +1,11 @@
 <?php
-
+   
 namespace App\Providers;
-
-use Inertia\Inertia;
   
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Session;
-
+use Inertia\Inertia;
+  
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -16,9 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+          
     }
-
+  
     /**
      * Bootstrap any application services.
      *

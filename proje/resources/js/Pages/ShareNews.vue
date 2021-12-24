@@ -24,7 +24,7 @@
                 >
                   <div class="overflow-hidden sm:rounded-lg">
                     <form
-                      @submit.prevent="submit"
+                      @submit="submit"
                       class="space-y-8 divide-y divide-gray-200"
                     >
                       <div class="space-y-8 divide-y divide-gray-200">
@@ -230,7 +230,8 @@
                   </dd>
                   <dt class="sr-only">Role</dt>
                   <dd class="mt-3">
-                    <jet-button @click="deleteData(person)"
+                    <jet-button
+                      @click="deleteRow(person)"
                       :class="{ 'opacity-25': form.processing }"
                       :disabled="form.processing"
                     >
@@ -256,12 +257,7 @@ import "@themesberg/flowbite";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import JetButton from "@/Jetstream/Button.vue";
 
-// const people = [
-//   { name: "News1", title: "Regional Paradigm Technician", date: "10.12.2021" },
-//   { name: "News2", title: "Product Directives Officer", date: "13.12.2021" },
-//   { name: "News3", title: "Officer Change", date: "08.11.2021" },
-//   // More people...
-// ];
+
 export default defineComponent({
   props: ["news"],
   components: {
@@ -273,7 +269,8 @@ export default defineComponent({
   },
   data() {
     return {
-      // people,
+      editMode: false,
+      isOpen: false,
       form: this.$inertia.form({
         title: "",
         description: "",
@@ -284,9 +281,45 @@ export default defineComponent({
   methods: {
     submit() {
       this.form.post(this.route("news.store"));
+      this.reset();
     },
-    deleteData(data) {
-      this.form.post(this.route("news.destroy" + data.id));
+    deleteRow: function (data) {
+      if (!confirm("Are you sure want to remove?")) return;
+      data._method = "DELETE";
+      this.$inertia.post("/news/" + data.id, data);
+      this.reset();
+      this.closeModal();
+    },
+    save: function (data) {
+      this.$inertia.post("/news", data);
+      this.reset();
+      this.closeModal();
+      this.editMode = false;
+    },
+    edit: function (data) {
+      this.form = Object.assign({}, data);
+      this.editMode = true;
+      this.openModal();
+    },
+    update: function (data) {
+      data._method = "PUT";
+      this.$inertia.post("/news/" + data.id, data);
+      this.reset();
+      this.closeModal();
+    },
+    openModal: function () {
+      this.isOpen = true;
+    },
+    closeModal: function () {
+      this.isOpen = false;
+      this.reset();
+      this.editMode = false;
+    },
+    reset: function () {
+      this.form = {
+        title: null,
+        body: null,
+      };
     },
   },
 });

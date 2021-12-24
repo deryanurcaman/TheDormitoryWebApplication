@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+// use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
@@ -38,9 +39,22 @@ class NewsController extends Controller
         $news->date = $request->date;
         $news->save();
 
-        return response('Succesfully created a new news', 200);
+        return redirect()->back();
     }
 
+    // public function store(Request $request)
+    // {
+    //     Validator::make($request->all(), [
+    //         'title' => ['required'],
+    //         'date' => ['required'],
+    //         'decription' => ['required'],
+    //     ])->validate();
+  
+    //     News::create($request->all());
+  
+    //     return redirect()->back()
+    //                 ->with('message', 'Post Created Successfully.');
+    // }
     /**
      * Display the specified resource.
      *
@@ -82,10 +96,12 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        News::find($id)->delete();
-       return response('Succesfully deleted the Room', 200);
+        if ($request->has('id')) {
+            News::find($request->input('id'))->delete();
+            return redirect()->back();
+        }
     }
 
     // public function destroy(Request $request)

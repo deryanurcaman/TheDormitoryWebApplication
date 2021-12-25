@@ -121,8 +121,8 @@
                         rounded-md
                       "
                     >
-                      <option>Room 1</option>
-                      <option>Room 2</option>
+                      <option v-for="(person) in rooms"
+                          :key="person.id">{{ person.name }}</option>
                     </select>
                   </div>
                 </div>
@@ -226,26 +226,8 @@ const plans = [
   },
 ];
 
-const people = [
-  {
-    title: "3rd Floor Renovation",
-    description:
-      "The renovation on the 3rd floor of the dormitory continues. Students are kindly requested not to visit this floor during the renovations to be made until Monday, 26.12.2021.",
-    date: "20.12.2021 Tuesday",
-    imageUrl:
-      "https://cdn-icons.flaticon.com/png/512/2692/premium/2692815.png?token=exp=1638886550~hmac=124e69e141b0103823c30695207c71be",
-  },
-  {
-    title: "Due Date of Fees",
-    description:
-      "The deadline for dormitory payments is 01.01.2022. It is announced to our students who do not pay.",
-    date: "23.12.2021 Tuesday",
-    imageUrl:
-      "https://cdn-icons.flaticon.com/png/512/2692/premium/2692815.png?token=exp=1638886550~hmac=124e69e141b0103823c30695207c71be",
-  },
-];
-
 export default defineComponent({
+  props: ["rooms"],
   components: {
     AppLayout,
     Welcome,
@@ -253,7 +235,6 @@ export default defineComponent({
   setup() {
     return {
       plans,
-      people,
     };
   },
 });

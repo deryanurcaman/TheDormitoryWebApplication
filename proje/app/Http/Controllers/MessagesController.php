@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Validator;
 
 class MessagesController extends Controller
 {
@@ -13,7 +15,9 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        return Message::all();
+        return Inertia::render('Messages', [
+            'messages' => Message::all()
+        ]);
     }
 
     /**
@@ -28,17 +32,15 @@ class MessagesController extends Controller
             'content' => 'required',
             'receiver' => 'required',
             'sender' => 'required',
-            'date' => 'required',
         ]);
 
         $message = new Message();
         $message->content = $request->content;
         $message->receiver = $request->receiver;
         $message->sender = $request->sender;
-        $message->date = $request->date;
         $message->save();
 
-        return response('Succesfully created a new message', 200);
+        return redirect()->back();
     }
 
     /**
@@ -84,9 +86,11 @@ class MessagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Message::find($id)->delete();
-        return response('Succesfully deleted the message', 200);
+        if ($request->has('id')) {
+            Message::find($request->input('id'))->delete();
+            return redirect()->back();
+        }
     }
 }

@@ -149,6 +149,7 @@
                       <div class="pt-5">
                         <div class="flex justify-end">
                           <jet-button
+                            wire:click.prevent="store()"
                             class="ml-4"
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"

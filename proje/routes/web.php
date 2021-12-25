@@ -3,6 +3,10 @@
 use App\Models\News;
 use App\Models\Room;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Message;
+
+
 use App\Http\Controllers\PostsController;
 
 use Illuminate\Foundation\Application;
@@ -40,22 +44,21 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/news', function () {
     return Inertia::render('News');
 })->name('news');
 
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/rooms', function () {
-    return Inertia::render('Rooms');
-})->name('rooms');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/rooms', function () {
+//     return Inertia::render('Rooms');
+// })->name('rooms');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/changerequest', function () {
-    return Inertia::render('ChangeRequest');
+    return Inertia::render('ChangeRequest',  [
+        'rooms' => Room::all()
+    ]);
 })->name('changerequest');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/myroom', function () {
     return Inertia::render('MyRoom');
 })->name('myroom');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/messages', function () {
-    return Inertia::render('Messages');
-})->name('messages');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/sharenews', function () {
     return Inertia::render('ShareNews', [
@@ -94,6 +97,9 @@ Route::resource('news', 'App\Http\Controllers\NewsController');
 
 Route::resource('rooms', 'App\Http\Controllers\RoomsController');
 
+Route::resource('messages', 'App\Http\Controllers\MessagesController'); //bunu mutlaka ekle
+
+
 // Route::resource('posts', PostController::class);
 
 Route::resource('posts', 'App\Http\Controllers\PostsController');
@@ -104,5 +110,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/posts', function () {
     ]);
 })->name('posts');
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/messages', function () {
+    return Inertia::render('Messages', [
+        'messages' => Message::all(),
+        'users' => User::all()
+    ]);
+})->name('messages');
 
 

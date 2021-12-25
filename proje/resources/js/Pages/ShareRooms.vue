@@ -168,6 +168,7 @@
                       <div class="pt-5">
                         <div class="flex justify-end">
                           <jet-button
+                            wire:click.prevent="store()"
                             class="ml-4"
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"
@@ -633,12 +634,10 @@ export default defineComponent({
   },
   methods: {
     submit() {
-      console.log("submite geldi");
       this.form.post(this.route("rooms.store"));
       this.reset();
     },
     openModal: function () {
-      console.log("openModal a geldi");
       this.isOpen = true;
     },
     closeModal: function () {

@@ -113,7 +113,7 @@
                         sm:mt-px sm:pt-2
                       "
                     >
-                      Select a Student
+                      Select a Person
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2 text-gray-700">
                       <select

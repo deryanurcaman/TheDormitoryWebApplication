@@ -88,34 +88,55 @@
                           >
                             Occupancy
                           </th>
+                          <th
+                            scope="col"
+                            class="
+                              px-6
+                              py-3
+                              text-left text-xs
+                              font-medium
+                              text-gray-500
+                              uppercase
+                              tracking-wider
+                            "
+                          >
+                            <span class="sr-only">Edit</span>
+                          </th>
+                          <th
+                            scope="col"
+                            class="
+                              px-6
+                              py-3
+                              text-left text-xs
+                              font-medium
+                              text-gray-500
+                              uppercase
+                              tracking-wider
+                            "
+                          >
+                            <span class="sr-only">Delete</span>
+                          </th>
                         </tr>
                       </thead>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Room 1
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              1 People
-                            </span>
+                      <tbody>
+                        <tr
+                          v-for="(person, personIdx) in rooms"
+                          :key="person.id"
+                          :class="
+                            personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                          "
+                        >
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm
+                              font-medium
+                              text-gray-900
+                            "
+                          >
+                            {{ person.name }}
                           </td>
                           <td
                             class="
@@ -125,7 +146,7 @@
                               text-sm text-gray-500
                             "
                           >
-                            130$ per month
+                            {{ person.capacity }} people
                           </td>
                           <td
                             class="
@@ -135,167 +156,17 @@
                               text-sm text-gray-500
                             "
                           >
-                            No Space
+                            {{ person.fee }} $
                           </td>
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm text-gray-500
+                            "
+                          ></td>
                         </tr>
-
-                        <!-- More people... -->
-                      </tbody>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Room 2
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              3 People
-                            </span>
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            250$ per month
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            1/3 People
-                          </td>
-                        </tr>
-
-                        <!-- More people... -->
-                      </tbody>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Room 3
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              2 People
-                            </span>
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            180$ per month
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            1/2 People
-                          </td>
-                        </tr>
-
-                        <!-- More people... -->
-                      </tbody>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Room 4
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              4 People
-                            </span>
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            100$ per month
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            2/4 People
-                          </td>
-                        </tr>
-
-                        <!-- More people... -->
                       </tbody>
                     </table>
                   </div>
@@ -314,11 +185,21 @@
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
+import "@themesberg/flowbite";
 
 export default defineComponent({
+  props: ["rooms"],
   components: {
     AppLayout,
     Welcome,
+  },
+  data() {
+    return {
+      
+    };
+  },
+  methods: {
+    
   },
 });
 </script>

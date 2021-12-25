@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class RoomsController extends Controller
@@ -15,9 +17,8 @@ class RoomsController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Room', [
-            'room' => Room::all()
-        ]);
+       $data = Room::all();
+        return Inertia::render('rooms', ['data' => $data]);
     }
 
     /**
@@ -34,13 +35,13 @@ class RoomsController extends Controller
             'fee' => 'required',
         ]);
 
-        $room = new Room();
-        $room->name = $request->name;
-        $room->capacity = $request->capacity;
-        $room->fee = $request->fee;
-        $room->save();
+        $news = new Room();
+        $news->name = $request->name;
+        $news->capacity = $request->capacity;
+        $news->fee = $request->fee;
+        $news->save();
 
-        return response('Succesfully created a new room', 200);
+        return redirect()->back();
     }
 
     /**
@@ -61,21 +62,19 @@ class RoomsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'capacity' => 'required',
-            'fee' => 'required',
-        ]);
-
-        $room = Room::find($id);
-        $room->name = $request->name;
-        $room->capacity = $request->capacity;
-        $room->fee = $request->fee;
-        $room->save();
-
-        return response('Succesfully updated the room', 200);
+        Validator::make($request->all(), [
+            'name' => ['required'],
+            'capacity' => ['required'],
+            'fee' => ['required'],
+        ])->validate();
+  
+        if ($request->has('id')) {
+            Room::find($request->input('id'))->update($request->all());
+            return redirect()->back()
+                    ->with('message', 'Post Updated Successfully.');
+        }
     }
 
     /**
@@ -84,9 +83,11 @@ class RoomsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Room::find($id)->delete();
-       return response('Succesfully deleted the Room', 200);
+        if ($request->has('id')) {
+            Room::find($request->input('id'))->delete();
+            return redirect()->back();
+        }
     }
 }

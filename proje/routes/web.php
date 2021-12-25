@@ -104,3 +104,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/posts', function () {
     ]);
 })->name('posts');
 
+
+

@@ -23168,7 +23168,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: this.$inertia.form({
         sender: this.$page.props.user.name + " " + this.$page.props.user.surname,
-        receiver: "",
+        receiver: null,
         content: ""
       })
     };
@@ -28536,22 +28536,23 @@ var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_23 = {
   "class": "mt-1 sm:mt-0 sm:col-span-2"
 };
+var _hoisted_24 = ["value"];
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "about",
   "class": "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
 }, " Write a Message ", -1
 /* HOISTED */
 );
 
-var _hoisted_25 = {
+var _hoisted_26 = {
   "class": "mt-1 sm:mt-0 sm:col-span-2"
 };
-var _hoisted_26 = {
+var _hoisted_27 = {
   "class": "flex justify-end"
 };
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Send ");
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Send ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
@@ -28582,7 +28583,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         )])])]), _hoisted_18], 512
         /* NEED_PATCH */
-        )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.$page.props.user.name + ' ' + _ctx.$page.props.user.surname == person.receiver]]);
+        )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, _ctx.$page.props.user.id == person.receiver]]);
       }), 128
       /* KEYED_FRAGMENT */
       ))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
@@ -28595,15 +28596,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "text-gray-700 max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
       }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.users, function (person) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-          key: person.id
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(person.name + " " + person.surname), 513
-        /* TEXT, NEED_PATCH */
-        )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, person.name + ' ' + person.surname != _ctx.$page.props.user.name + ' ' + _ctx.$page.props.user.surname]]);
+          key: person.id,
+          value: person.id
+        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(person.name + " " + person.surname), 9
+        /* TEXT, PROPS */
+        , _hoisted_24)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, person.name + ' ' + person.surname != _ctx.$page.props.user.name + ' ' + _ctx.$page.props.user.surname]]);
       }), 128
       /* KEYED_FRAGMENT */
       ))], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.form.receiver]])]), _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.form.receiver]])]), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return _ctx.form.content = $event;
         }),
@@ -28613,7 +28615,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "text-gray-700 max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.content]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.content]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
         "wire:click.prevent": "store()",
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["ml-4", {
           'opacity-25': _ctx.form.processing
@@ -28621,7 +28623,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         disabled: _ctx.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_27];
+          return [_hoisted_28];
         }),
         _: 1
         /* STABLE */

@@ -36,11 +36,12 @@
                       "
                     >
                       <li
-                        
                         v-for="person in messages"
                         :key="person.email"
-                        v-show="$page.props.user.name + ' ' + $page.props.user.surname == person.receiver"
-                        
+                        v-show="
+                          $page.props.user.id ==
+                          person.receiver
+                        "
                         class="
                           col-span-1
                           flex flex-col
@@ -51,10 +52,8 @@
                           divide-y divide-gray-200
                           mt-5
                         "
-                        
-                        
                       >
-                        <div class="flex-1 flex flex-col p-8" >
+                        <div class="flex-1 flex flex-col p-8">
                           <h2 class="mt-6 text-gray-900 text-xl font-medium">
                             From: {{ person.sender }}
                           </h2>
@@ -122,7 +121,6 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <select
-                      
                         v-model="form.receiver"
                         id="country"
                         name="country"
@@ -139,7 +137,17 @@
                           rounded-md
                         "
                       >
-                        <option v-show="person.name + ' ' + person.surname != $page.props.user.name + ' ' + $page.props.user.surname" v-for="person in users" :key="person.id" >
+                        <option
+                          v-show="
+                            person.name + ' ' + person.surname !=
+                            $page.props.user.name +
+                              ' ' +
+                              $page.props.user.surname
+                          "
+                          v-for="person in users"
+                          :key="person.id"
+                          :value="person.id"
+                        >
                           {{ person.name + " " + person.surname }}
                         </option>
                       </select>
@@ -175,7 +183,6 @@
                         "
                       />
                     </div>
-                    
                   </div>
                   <div class="flex justify-end">
                     <jet-button
@@ -203,7 +210,6 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
 import JetButton from "@/Jetstream/Button.vue";
 
-
 export default defineComponent({
   props: ["users", "messages"],
   components: {
@@ -214,8 +220,9 @@ export default defineComponent({
   data() {
     return {
       form: this.$inertia.form({
-        sender: this.$page.props.user.name + " " + this.$page.props.user.surname,
-        receiver: "",
+        sender:
+          this.$page.props.user.name + " " + this.$page.props.user.surname,
+        receiver: null,
         content: "",
       }),
     };

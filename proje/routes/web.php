@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Message;
 
 
+
 use App\Http\Controllers\PostsController;
 
 use Illuminate\Foundation\Application;
@@ -99,6 +100,9 @@ Route::resource('rooms', 'App\Http\Controllers\RoomsController');
 
 Route::resource('messages', 'App\Http\Controllers\MessagesController'); //bunu mutlaka ekle
 
+Route::resource('personnelmessages', 'App\Http\Controllers\PersonnelMessagesController'); //bunu mutlaka ekle
+
+
 
 // Route::resource('posts', PostController::class);
 
@@ -119,3 +123,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/messages', function () {
 })->name('messages');
 
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/personnelmessages', function () {
+    return Inertia::render('PersonnelMessages', [
+        'messages' => Message::all(),
+        'users' => User::all()
+    ]);
+})->name('personnelmessages');

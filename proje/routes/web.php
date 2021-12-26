@@ -5,11 +5,12 @@ use App\Models\Room;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Message;
+use App\Models\StudentsInRooms;
+
 
 
 
 use App\Http\Controllers\PostsController;
-
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -67,9 +68,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/sharenews', function () {
     ]);
 })->name('sharenews');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/studentsinrooms', function () {
-    return Inertia::render('StudentsInRooms');
-})->name('studentsinrooms');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/sharerooms', function () {
     return Inertia::render('ShareRooms',  [
@@ -102,6 +101,7 @@ Route::resource('messages', 'App\Http\Controllers\MessagesController'); //bunu m
 
 Route::resource('personnelmessages', 'App\Http\Controllers\PersonnelMessagesController'); //bunu mutlaka ekle
 
+Route::resource('studentsinrooms', 'App\Http\Controllers\StudentsInRoomsController'); //bunu mutlaka ekle
 
 
 // Route::resource('posts', PostController::class);
@@ -129,3 +129,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/personnelmessages', funct
         'users' => User::all()
     ]);
 })->name('personnelmessages');
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/studentsinrooms', function () {
+    return Inertia::render('Studentsinrooms', [
+        'studentsinrooms' => Studentsinrooms::all(),
+        'users' => User::all(),
+        'rooms' => Room::all(),
+
+    ]);
+})->name('studentsinrooms');

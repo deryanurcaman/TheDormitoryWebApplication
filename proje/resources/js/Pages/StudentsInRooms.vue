@@ -61,7 +61,6 @@
                           >
                             Room Name
                           </th>
-
                           <th
                             scope="col"
                             class="
@@ -78,34 +77,26 @@
                           </th>
                         </tr>
                       </thead>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Derya Nur
-                                </div>
-                              </div>
-                            </div>
+                      <tbody>
+                        <tr
+                          v-for="(person, personIdx) in studentsinrooms"
+                          :key="person.id"
+                          :class="
+                            personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                          "
+                        >
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm
+                              font-medium
+                              text-gray-900
+                            "
+                          >
+                            {{ person.student_id }}
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              Room 5
-                            </span>
-                          </td>
-
                           <td
                             class="
                               px-6
@@ -114,109 +105,24 @@
                               text-sm text-gray-500
                             "
                           >
-                            <a
-                              href="#"
-                              class="text-indigo-600 hover:text-indigo-900"
-                              >Delete</a
-                            >
+                            {{ person.room_id }} 
                           </td>
-                        </tr>
-
-                        <!-- More people... -->
-                      </tbody>
-
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Derya Nur
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              Room 5
-                            </span>
-                          </td>
-
                           <td
                             class="
                               px-6
                               py-4
                               whitespace-nowrap
-                              text-sm text-gray-500
+                              text-right text-sm
+                              font-medium
                             "
                           >
-                            <a
-                              href="#"
+                            <button
                               class="text-indigo-600 hover:text-indigo-900"
-                              >Delete</a
                             >
+                              Delete
+                            </button>
                           </td>
                         </tr>
-
-                        <!-- More people... -->
-                      </tbody>
-
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Derya Nur
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <span
-                              class="
-                                px-2
-                                inline-flex
-                                text-xs
-                                leading-5
-                                font-semibold
-                                rounded-full
-                                bg-green-100
-                                text-green-800
-                              "
-                            >
-                              Room 5
-                            </span>
-                          </td>
-
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            <a
-                              href="#"
-                              class="text-indigo-600 hover:text-indigo-900"
-                              >Delete</a
-                            >
-                          </td>
-                        </tr>
-
-                        <!-- More people... -->
                       </tbody>
                     </table>
                   </div>
@@ -513,11 +419,13 @@ const people = [
   // More people...
 ];
 export default defineComponent({
+
+  props: ["studentsinrooms"],
   components: {
     AppLayout,
     Welcome,
   },
-  setup() {
+  data() {
     return {
       people,
     };

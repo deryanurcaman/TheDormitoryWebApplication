@@ -2,13 +2,13 @@
   <app-layout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Messages
+        Personnel Messages
       </h2>
     </template>
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <form class="space-y-8 divide-y divide-gray-200">
+        <form @submit="submit" class="space-y-8 divide-y divide-gray-200">
           <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
             <div>
               <div class="py-12">
@@ -36,8 +36,11 @@
                       "
                     >
                       <li
-                        v-for="person in people"
+                        
+                        v-for="person in messages"
                         :key="person.email"
+                        v-show="$page.props.user.name + ' ' + $page.props.user.surname == person.receiver"
+                        
                         class="
                           col-span-1
                           flex flex-col
@@ -48,17 +51,19 @@
                           divide-y divide-gray-200
                           mt-5
                         "
+                        
+                        
                       >
-                        <div class="flex-1 flex flex-col p-8">
+                        <div class="flex-1 flex flex-col p-8" >
                           <h2 class="mt-6 text-gray-900 text-xl font-medium">
-                            From: {{ person.title }}
+                            From: {{ person.sender }}
                           </h2>
                           <dl
                             class="mt-1 flex-grow flex flex-col justify-between"
                           >
                             <dt class="sr-only">Title</dt>
                             <dd class="text-gray-500 text-sm">
-                              {{ person.description }}
+                              {{ person.content }}
                             </dd>
                             <dt class="sr-only">Role</dt>
                             <dd class="mt-3">
@@ -71,7 +76,7 @@
                                   bg-green-100
                                   rounded-full
                                 "
-                                >{{ person.date }}</span
+                                >{{ person.created_at }}</span
                               >
                             </dd>
                           </dl>
@@ -88,7 +93,7 @@
                       Send A Message
                     </h2>
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                      First, you need to choose a student and then write your
+                      First, you need to choose a person and then write your
                       message.
                     </p>
                   </div>
@@ -115,12 +120,15 @@
                     >
                       Select a Person
                     </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2 text-gray-700">
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <select
+                      
+                        v-model="form.receiver"
                         id="country"
                         name="country"
                         autocomplete="country-name"
                         class="
+                          text-gray-700
                           max-w-lg
                           block
                           focus:ring-indigo-500 focus:border-indigo-500
@@ -131,8 +139,9 @@
                           rounded-md
                         "
                       >
-                        <option>Derya Nur</option>
-                        <option>Mr Lotiches</option>
+                        <option v-show="person.name + ' ' + person.surname != $page.props.user.name + ' ' + $page.props.user.surname" v-for="person in users" :key="person.id" >
+                          {{ person.name + " " + person.surname }}
+                        </option>
                       </select>
                     </div>
                     <label
@@ -147,12 +156,14 @@
                     >
                       Write a Message
                     </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2 text-gray-700">
+                    <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <textarea
+                        v-model="form.content"
                         id="about"
                         name="about"
                         rows="3"
                         class="
+                          text-gray-700
                           max-w-lg
                           shadow-sm
                           block
@@ -164,31 +175,17 @@
                         "
                       />
                     </div>
+                    
                   </div>
                   <div class="flex justify-end">
-                    <button
-                      type="submit"
-                      class="
-                        ml-3
-                        inline-flex
-                        justify-center
-                        py-2
-                        px-4
-                        border border-transparent
-                        shadow-sm
-                        font-medium
-                        rounded-md
-                        text-white
-                        bg-indigo-600
-                        hover:bg-indigo-700
-                        focus:outline-none
-                        focus:ring-2
-                        focus:ring-offset-2
-                        focus:ring-indigo-500
-                      "
+                    <jet-button
+                      wire:click.prevent="store()"
+                      class="ml-4"
+                      :class="{ 'opacity-25': form.processing }"
+                      :disabled="form.processing"
                     >
                       Send
-                    </button>
+                    </jet-button>
                   </div>
                 </div>
               </div>
@@ -204,43 +201,70 @@
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
+import JetButton from "@/Jetstream/Button.vue";
 
-const plans = [
-  {
-    id: "new",
-    name: "New Apply",
-    description: "If you apply for a room for the first time, choose this",
-  },
-  {
-    id: "change",
-    name: "Change Request",
-    description: "If you want to change your room, choose this",
-  },
-];
-const people = [
-  {
-    title: "Mrs. Norris",
-    description:
-      "The renovation on the 3rd floor of the dormitory continues. Students are kindly requested not to visit this floor during the renovations to be made until Monday, 26.12.2021.",
-    date: "20.12.2021 Tuesday",
-  },
-  {
-    title: "Due Date of Fees",
-    description:
-      "The deadline for dormitory payments is 01.01.2022. It is announced to our students who do not pay.",
-    date: "23.12.2021 Tuesday",
-  },
-];
+
 export default defineComponent({
+  props: ["users", "messages"],
   components: {
+    JetButton,
     AppLayout,
     Welcome,
   },
-  setup() {
+  data() {
     return {
-      plans,
-      people,
+      form: this.$inertia.form({
+        sender: this.$page.props.user.name + " " + this.$page.props.user.surname,
+        receiver: "",
+        content: "",
+      }),
     };
+  },
+  methods: {
+    submit() {
+      this.form.post(this.route("messages.store"));
+      this.reset();
+    },
+    openModal: function () {
+      this.isOpen = true;
+    },
+    closeModal: function () {
+      this.isOpen = false;
+      this.reset();
+      this.editMode = false;
+    },
+    reset: function () {
+      this.form = {
+        name: null,
+        description: null,
+        fee: null,
+      };
+    },
+    save: function (data) {
+      this.$inertia.post("/rooms", data);
+      this.reset();
+      this.closeModal();
+      this.editMode = false;
+    },
+    edit: function (data) {
+      console.log("edite geldi");
+      this.form = Object.assign({}, data);
+      this.editMode = true;
+      this.openModal();
+    },
+    update: function (data) {
+      data._method = "PUT";
+      this.$inertia.post("/rooms/" + data.id, data);
+      this.reset();
+      this.closeModal();
+    },
+    deleteRow: function (data) {
+      if (!confirm("Are you sure want to remove?")) return;
+      data._method = "DELETE";
+      this.$inertia.post("/rooms/" + data.id, data);
+      this.reset();
+      this.closeModal();
+    },
   },
 });
 </script>

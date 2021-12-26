@@ -14,11 +14,15 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('content'); 
-            $table->string('receiver'); 
+            $table->unsignedInteger('receiver'); 
             $table->string('sender'); 
             $table->timestamps();
+            $table->foreign('receiver')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

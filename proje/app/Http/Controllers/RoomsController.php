@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Room;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;
@@ -53,6 +55,7 @@ class RoomsController extends Controller
      */
     public function show($id)
     {
+        $users = User::find($id); //bu ne acaba
         return Room::find($id); 
     }
 

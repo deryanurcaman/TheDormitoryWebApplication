@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Studentsinrooms extends Model
+class Roomrequest extends Model
 {
     use HasFactory;
-
-
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +15,5 @@ class Studentsinrooms extends Model
      * @var array
      */
     protected $fillable = [
-        'student_id', 'room_id'
-    ];
-    
+        'student_id', 'request_room', 'comment', 'type'];
 }

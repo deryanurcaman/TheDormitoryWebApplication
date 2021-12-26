@@ -8,6 +8,7 @@
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <h2 class="text-xl text-gray-900 mb-3">All Students In Rooms</h2>
         <form class="space-y-8 divide-y divide-gray-200">
           <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
             <div class="flex flex-col">
@@ -117,6 +118,7 @@
                             "
                           >
                             <button
+                              @click="deleteRow(person)"
                               class="text-indigo-600 hover:text-indigo-900"
                             >
                               Delete
@@ -136,6 +138,7 @@
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <h2 class="text-xl text-gray-900 mb-3">All Room Requests</h2>
         <form class="space-y-8 divide-y divide-gray-200">
           <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
             <div class="flex flex-col">
@@ -201,9 +204,8 @@
                               tracking-wider
                             "
                           >
-                            Reason/Comment
+                            Request Room
                           </th>
-
                           <th
                             scope="col"
                             class="
@@ -216,9 +218,8 @@
                               tracking-wider
                             "
                           >
-                            Room Request
+                            Comment/Reason
                           </th>
-
                           <th
                             scope="col"
                             class="
@@ -233,7 +234,6 @@
                           >
                             <span class="sr-only">Accept</span>
                           </th>
-
                           <th
                             scope="col"
                             class="
@@ -250,59 +250,40 @@
                           </th>
                         </tr>
                       </thead>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Change
-                                </div>
-                              </div>
-                            </div>
+                      <tbody>
+                        <tr
+                          v-for="(person, personIdx) in roomrequests"
+                          :v-model="form.student_id=person.student_id"
+                          :key="person.id"
+                          :class="
+                            personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                          "
+                        >
+                          <td
+                          :v-model="form.room_id=person.request_room"
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm
+                              font-medium
+                              text-gray-900
+                            "
+                          >
+                            {{ person.type }}
                           </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Derya
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Bok vardı oda değiştirmek istedim
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Room 5
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
                           <td
                             class="
                               px-6
                               py-4
                               whitespace-nowrap
-                              text-sm text-gray-500
+                              text-sm
+                              font-medium
+                              text-gray-900
                             "
                           >
-                            <a
-                              href="#"
-                              class="text-indigo-600 hover:text-indigo-900"
-                              >Accept</a
-                            >
+                            {{ person.student_id }}
+                            
                           </td>
                           <td
                             class="
@@ -312,88 +293,53 @@
                               text-sm text-gray-500
                             "
                           >
-                            <a
-                              href="#"
+                            {{ person.request_room }} 
+                          </td>
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm text-gray-500
+                            "
+                          >
+                            {{ person.comment }} 
+                          </td>
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-right text-sm
+                              font-medium
+                            "
+                          >
+                            <button
+                              v-on:click="accept"
+                              @click="acceptDeleteRow(person)"
+                              type="button"
                               class="text-indigo-600 hover:text-indigo-900"
-                              >Reject</a
                             >
+                              Accept
+                            </button>
+                          </td>
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-right text-sm
+                              font-medium
+                            "
+                          >
+                            <button
+                              @click="rejectRow(person)"
+                              class="text-indigo-600 hover:text-indigo-900"
+                            >
+                              Reject
+                            </button>
                           </td>
                         </tr>
-
-                        <!-- More people... -->
-                      </tbody>
-
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  New Apply
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Rana
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  No comment
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Room 6
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            <a
-                              href="#"
-                              class="text-indigo-600 hover:text-indigo-900"
-                              >Accept</a
-                            >
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            <a
-                              href="#"
-                              class="text-indigo-600 hover:text-indigo-900"
-                              >Reject</a
-                            >
-                          </td>
-                        </tr>
-
-                        <!-- More people... -->
                       </tbody>
                     </table>
                   </div>
@@ -412,23 +358,74 @@ import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
 
-const people = [
-  { name: "News1", title: "Regional Paradigm Technician", date: "10.12.2021" },
-  { name: "News2", title: "Product Directives Officer", date: "13.12.2021" },
-  { name: "News3", title: "Officer Change", date: "08.11.2021" },
-  // More people...
-];
+
 export default defineComponent({
 
-  props: ["studentsinrooms"],
+  props: ["studentsinrooms", "roomrequests"],
   components: {
     AppLayout,
     Welcome,
   },
   data() {
     return {
-      people,
+      form: this.$inertia.form({
+        student_id: "",
+        room_id: this.$page.props.user.id,
+      }),
     };
+  },
+  methods: {
+    accept: function () {
+      this.form.post(this.route("studentsinrooms.store"));
+      this.reset();
+    },
+    deleteRow: function (data) {
+      if (!confirm("Are you sure want to remove?")) return;
+      data._method = "DELETE";
+      this.$inertia.post("/studentsinrooms/" + data.id, data);
+      this.reset();
+    },
+    rejectRow: function (data) {
+      data._method = "DELETE";
+      this.$inertia.post("/roomrequests/" + data.id, data);
+      this.reset();
+    },
+    acceptDeleteRow: function (data) {
+      data._method = "DELETE";
+      this.$inertia.post("/roomrequests/" + data.id, data);
+      this.reset();
+    },
+    save: function (data) {
+      this.$inertia.post("/news", data);
+      this.reset();
+      this.closeModal();
+      this.editMode = false;
+    },
+    edit: function (data) {
+      this.form = Object.assign({}, data);
+      this.editMode = true;
+      this.openModal();
+    },
+    update: function (data) {
+      data._method = "PUT";
+      this.$inertia.post("/news/" + data.id, data);
+      this.reset();
+      this.closeModal();
+    },
+    openModal: function () {
+      this.isOpen = true;
+    },
+    closeModal: function () {
+      this.isOpen = false;
+      this.reset();
+      this.editMode = false;
+    },
+    reset: function () {
+      this.form = {
+        title: null,
+        body: null,
+      };
+    },
   },
 });
 </script>

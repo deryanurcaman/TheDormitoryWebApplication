@@ -34,7 +34,7 @@
                                 </jet-nav-link>
                             </div>
                             <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('changerequest')" :active="route().current('changerequest')">
+                                <jet-nav-link :href="route('roomrequests')" :active="route().current('roomrequests')">
                                     Room Request
                                 </jet-nav-link>
                             </div>

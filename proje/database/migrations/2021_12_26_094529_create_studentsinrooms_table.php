@@ -25,6 +25,7 @@ class CreateStudentsInRoomsTable extends Migration
                 ->references('id')
                 ->on('rooms')
                 ->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

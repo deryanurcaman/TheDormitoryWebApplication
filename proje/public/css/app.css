@@ -3491,6 +3491,9 @@ select {
 .mb-2 {
 	margin-bottom: 0.5rem;
 }
+.mb-5 {
+	margin-bottom: 1.25rem;
+}
 .block {
 	display: block;
 }
@@ -4109,6 +4112,9 @@ select {
 }
 .font-bold {
 	font-weight: 700;
+}
+.font-extrabold {
+	font-weight: 800;
 }
 .uppercase {
 	text-transform: uppercase;

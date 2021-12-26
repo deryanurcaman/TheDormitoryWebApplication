@@ -8,7 +8,7 @@
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <form class="space-y-8 divide-y divide-gray-200">
+        <form @submit="submit" class="space-y-8 divide-y divide-gray-200">
           <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
             <div>
               <div>
@@ -53,6 +53,8 @@
                     >
                       <div class="flex items-center h-5">
                         <input
+                        v-model="form.type"
+                        :value="plan.name"
                           :id="plan.id"
                           :aria-describedby="`${plan.id}-description`"
                           name="plan"
@@ -106,6 +108,8 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <select
+                    v-model="form.request_room"
+                    
                       id="country"
                       name="country"
                       autocomplete="country-name"
@@ -121,7 +125,7 @@
                         rounded-md
                       "
                     >
-                      <option v-for="(person) in rooms"
+                      <option :value="person.id" v-for="(person) in rooms"
                           :key="person.id">{{ person.name }}</option>
                     </select>
                   </div>
@@ -152,6 +156,7 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <textarea
+                    v-model="form.comment"
                       id="about"
                       name="about"
                       rows="3"
@@ -176,30 +181,14 @@
           <div class="pt-5">
             <div class="flex justify-end">
               
-              <button
-                type="submit"
-                class="
-                  ml-3
-                  inline-flex
-                  justify-center
-                  py-2
-                  px-4
-                  border border-transparent
-                  shadow-sm
-                  text-sm
-                  font-medium
-                  rounded-md
-                  text-white
-                  bg-indigo-600
-                  hover:bg-indigo-700
-                  focus:outline-none
-                  focus:ring-2
-                  focus:ring-offset-2
-                  focus:ring-indigo-500
-                "
-              >
-                Save
-              </button>
+              <jet-button
+                            wire:click.prevent="store()"
+                            class="ml-4"
+                            :class="{ 'opacity-25': form.processing }"
+                            :disabled="form.processing"
+                          >
+                            Share
+                          </jet-button>
             </div>
           </div>
         </form>
@@ -212,6 +201,10 @@
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
+import { Head, Link } from "@inertiajs/inertia-vue3";
+import JetButton from "@/Jetstream/Button.vue";
+
+
 
 const plans = [
   {
@@ -229,13 +222,28 @@ const plans = [
 export default defineComponent({
   props: ["rooms"],
   components: {
+    Head,
+    Link,
     AppLayout,
     Welcome,
+    JetButton
   },
-  setup() {
+  data() {
     return {
       plans,
+      form: this.$inertia.form({
+        student_id: this.$page.props.user.id,
+        type: "",
+        comment: "",
+        request_room: "",
+      }),
     };
   },
+  methods: {
+    submit() {
+      console.log("submite geldi")
+      this.form.post(this.route("roomrequests.store"));
+      console.log("2 geldi")
+    },}
 });
 </script>

@@ -3491,9 +3491,6 @@ select {
 .mb-2 {
 	margin-bottom: 0.5rem;
 }
-.mb-5 {
-	margin-bottom: 1.25rem;
-}
 .block {
 	display: block;
 }
@@ -4113,9 +4110,6 @@ select {
 .font-bold {
 	font-weight: 700;
 }
-.font-extrabold {
-	font-weight: 800;
-}
 .uppercase {
 	text-transform: uppercase;
 }
@@ -4349,10 +4343,6 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }
-.hover\:bg-indigo-700:hover {
-	--tw-bg-opacity: 1;
-	background-color: rgba(81, 69, 205, var(--tw-bg-opacity));
-}
 .hover\:bg-blue-700:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(26, 86, 219, var(--tw-bg-opacity));
@@ -4473,11 +4463,6 @@ select {
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
 	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
-.focus\:ring-2:focus {
-	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
 .focus\:ring-gray-300:focus {
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgba(209, 213, 219, var(--tw-ring-opacity));
@@ -4500,9 +4485,6 @@ select {
 }
 .focus\:ring-opacity-50:focus {
 	--tw-ring-opacity: 0.5;
-}
-.focus\:ring-offset-2:focus {
-	--tw-ring-offset-width: 2px;
 }
 .active\:bg-gray-100:active {
 	--tw-bg-opacity: 1;
@@ -4626,12 +4608,12 @@ select {
 		margin-left: 0px;
 	}
 
-	.sm\:mt-5 {
-		margin-top: 1.25rem;
-	}
-
 	.sm\:mt-px {
 		margin-top: 1px;
+	}
+
+	.sm\:mt-5 {
+		margin-top: 1.25rem;
 	}
 
 	.sm\:block {
@@ -4723,12 +4705,12 @@ select {
 		transform: var(--tw-transform);
 	}
 
-	.sm\:grid-cols-3 {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-	}
-
 	.sm\:grid-cols-2 {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.sm\:grid-cols-3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 
 	.sm\:grid-cols-6 {

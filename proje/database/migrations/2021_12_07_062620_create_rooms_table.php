@@ -18,7 +18,7 @@ class CreateRoomsTable extends Migration
             $table->string('name'); 
             $table->integer('capacity');
             $table->double('fee');
-            $table->integer('occupancy')->nullable();
+            $table->integer('occupancy');
             $table->timestamps();
         });
     }

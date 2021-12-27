@@ -18,16 +18,12 @@ class CreateRoomrequestsTable extends Migration
                 $table->string('type'); 
                 $table->string('comment'); 
                 $table->unsignedInteger('student_id'); 
-                $table->unsignedInteger('current_room')->nullable();
                 $table->unsignedInteger('request_room'); 
                 $table->foreign('student_id')
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
-                $table->foreign('current_room')
-                    ->references('id')
-                    ->on('rooms')
-                    ->onDelete('cascade');
+                    
                 $table->foreign('request_room')
                     ->references('id')
                     ->on('rooms')

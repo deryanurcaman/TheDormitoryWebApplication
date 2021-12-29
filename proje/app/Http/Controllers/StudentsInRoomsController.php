@@ -1,8 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Payment;
+use App\Models\Room;
+use App\Models\Roomrequest;
 use App\Models\StudentsInRooms;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,8 +21,13 @@ class StudentsInRoomsController extends Controller
      */
     public function index()
     {
-        return Inertia::render('StudentsInRooms', [
-            'studentsinrooms' => StudentsInRooms::all()
+        
+        return Inertia::render('Studentsinrooms', [
+            'studentsinrooms' => StudentsInRooms::with('room', 'user')->get()->toArray(),
+            'users' => User::all(),
+            'rooms' => Room::all(),
+            'roomrequests' => Roomrequest::with('room', 'user')->get()->toArray(),
+            'payments' => Payment::all()
         ]);
     }
 
@@ -31,12 +42,21 @@ class StudentsInRoomsController extends Controller
         $this->validate($request, [
             'student_id' => 'required',
             'room_id' => 'required',
+            'status' => ''
         ]);
 
         $studentsinrooms = new StudentsInRooms();
         $studentsinrooms->student_id = $request->student_id;
         $studentsinrooms->room_id = $request->room_id;
         $studentsinrooms->save();
+
+        if ($request->withPayment) {
+            $payments = new Payment();
+            $payments->student_id = $request->student_id;
+            $payments->room_id = $request->room_id;
+            $payments->status = $request->status;
+            $payments->save();
+        }
 
         return redirect()->back();
     }
@@ -83,7 +103,12 @@ class StudentsInRoomsController extends Controller
     public function destroy(Request $request)
     {
         if ($request->has('id')) {
-            StudentsInRooms::find($request->input('id'))->delete();
+            $stInRooms = StudentsInRooms::find($request->input('id'));
+            $stInRooms->delete();
+
+            $room = Room::where('id',$stInRooms->room_id)->withCount('users')->first();
+            $room->occupancy = $room->users_count;
+            $room->save();
             return redirect()->back();
         }
     }

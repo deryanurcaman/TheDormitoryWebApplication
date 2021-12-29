@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Validator;
 
 class PaymentsController extends Controller
 {
@@ -13,7 +15,9 @@ class PaymentsController extends Controller
      */
     public function index()
     {
-        return Payment::all();
+        return Inertia::render('Payments', [
+            'payments' => Payment::with('room', 'user')->get()->toArray(),
+        ]);
     }
 
     /**
@@ -25,16 +29,18 @@ class PaymentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'amount' => 'required',
-            'status' => 'required',
+            'student_id' => 'required',
+            'room_id' => 'required',
+            'status' => 'required'
         ]);
 
-        $payment = new Payment();
-        $payment->amount = $request->amount;
-        $payment->sttatus = $request->sttatus;
-        $payment->save();
+        $payments = new Payment();
+        $payments->student_id = $request->student_id;
+        $payments->room_id = $request->room_id;
+        $payments->status = $request->status;
+        $payments->save();
 
-        return response('Succesfully created a new payment', 200);
+        return redirect()->back();
     }
 
     /**
@@ -58,16 +64,18 @@ class PaymentsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'amount' => 'required',
-            'status' => 'required',
+            'student_id' => 'required',
+            'room_id' => 'required',
+            'status' => 'required'
         ]);
 
-        $payment = Payment::find($id);
-        $payment->amount = $request->amount;
-        $payment->status = $request->status;
-        $payment->save();
+        $payments = Payment::find($id);
+        $payments->student_id = $request->student_id;
+        $payments->room_id = $request->room_id;
+        $payments->status = $request->status;
+        $payments->save();
 
-        return response('Succesfully updated the payment', 200);
+        return response('Succesfully updated the message', 200);
     }
 
     /**
@@ -76,9 +84,11 @@ class PaymentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Payment::find($id)->delete();
-       return response('Succesfully deleted the Room', 200);
+        if ($request->has('id')) {
+            Payment::find($request->input('id'))->delete();
+            return redirect()->back();
+        }
     }
 }

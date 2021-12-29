@@ -14,9 +14,10 @@
               <div class="bg-white shadow overflow-hidden sm:rounded-lg">
     <div class="px-4 py-5 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900">
-        Room Details
+        Room Details 
       </h3>
-      
+      <div>{{ userinfo.rooms }} </div>
+      <div>{{ userinfo.payments }}</div>
     </div>
     <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
       <dl class="sm:divide-y sm:divide-gray-200">
@@ -25,7 +26,8 @@
             Room Name
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            Room 14
+            <!-- {{ studentsinrooms[0].room_id }} -->
+            Room 5
           </dd>
         </div>
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -42,14 +44,6 @@
           </dt>
           <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
             1300$
-          </dd>
-        </div>
-        <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-          <dt class="text-sm font-medium text-gray-500">
-            Roommates
-          </dt>
-          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-            Derya Nur, Faika Rana
           </dd>
         </div>
         <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -97,41 +91,14 @@ import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
 
-const plans = [
-  {
-    id: "new",
-    name: "New Apply",
-    description: "If you apply for a room for the first time, choose this",
-  },
-  {
-    id: "change",
-    name: "Change Request",
-    description: "If you want to change your room, choose this",
-  },
-];
-const people = [
-  {
-    title: "Mrs. Norris",
-    description:
-      "The renovation on the 3rd floor of the dormitory continues. Students are kindly requested not to visit this floor during the renovations to be made until Monday, 26.12.2021.",
-    date: "20.12.2021 Tuesday",
-  },
-  {
-    title: "Due Date of Fees",
-    description:
-      "The deadline for dormitory payments is 01.01.2022. It is announced to our students who do not pay.",
-    date: "23.12.2021 Tuesday",
-  },
-];
 export default defineComponent({
+  props: ["studentsinrooms",'userinfo'],
   components: {
     AppLayout,
     Welcome,
   },
-  setup() {
+  data() {
     return {
-      plans,
-      people,
     };
   },
 });

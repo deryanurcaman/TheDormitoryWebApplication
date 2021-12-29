@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'student_id');
+    }
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 }

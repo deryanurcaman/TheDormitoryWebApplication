@@ -6,8 +6,9 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\StudentsInRooms;
+use App\Models\Payment;
 
-
+use Illuminate\Support\Facades\Auth;
 
 
 use App\Http\Controllers\PostsController;
@@ -51,15 +52,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/news', function () {
 //     return Inertia::render('Rooms');
 // })->name('rooms');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/roomrequests', function () {
-    return Inertia::render('RoomRequests',  [
-        'rooms' => Room::all(),
-        'roomrequests' => Roomrequest::all()
-    ]);
-})->name('roomrequests');
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/myroom', function () {
-    return Inertia::render('MyRoom');
+    return Inertia::render('MyRoom',[
+        'userinfo' => User::where('id',Auth::id())->with('rooms', 'payments')->first()->toArray()
+    ]);
 })->name('myroom');
 
 
@@ -107,6 +103,8 @@ Route::resource('studentsinrooms', 'App\Http\Controllers\StudentsInRoomsControll
 
 Route::resource('roomrequests', 'App\Http\Controllers\RoomrequestsController'); //bunu mutlaka ekle
 
+Route::resource('payments', 'App\Http\Controllers\PaymentsController'); //bunu mutlaka ekle
+
 
 // Route::resource('posts', PostController::class);
 
@@ -136,19 +134,27 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/personnelmessages', funct
 
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/studentsinrooms', function () {
-    return Inertia::render('Studentsinrooms', [
-        'studentsinrooms' => Studentsinrooms::all(),
-        'users' => User::all(),
-        'rooms' => Room::all(),
-        'roomrequests' => Roomrequest::all()
+// Route::middleware(['auth:sanctum', 'verified'])->get('/studentsinrooms', function () {
+//     return Inertia::render('Studentsinrooms', [
+//         'studentsinrooms' => Studentsinrooms::all(),
+//         'users' => User::all(),
+//         'rooms' => Room::all(),
+//         'roomrequests' => Roomrequest::all(),
+//         'payments' => Payment::all()
 
-    ]);
-})->name('studentsinrooms');
+//     ]);
+// })->name('studentsinrooms');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/roomrequests', function () {
-    return Inertia::render('RoomRequests',  [
-        'rooms' => Room::all(),
-        'roomrequests' => Roomrequest::all()
-    ]);
-})->name('roomrequests');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/roomrequests', function () {
+//     return Inertia::render('RoomRequests',  [
+//         'rooms' => Room::all(),
+//         'roomrequests' => Roomrequest::all()
+//     ]);
+// })->name('roomrequests');
+
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/payments', function () {
+//     return Inertia::render('Payments', [
+//         'payments' => Payment::all()
+//     ]);
+// })->name('payments');

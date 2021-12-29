@@ -20,4 +20,12 @@ class Studentsinrooms extends Model
         'student_id', 'room_id'
     ];
     
+    public function user()
+    {
+        return $this->belongsTo(User::class,'student_id');
+    }
+    public function room()
+    {
+        return $this->belongsTo(Room::class);
+    }
 }

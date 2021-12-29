@@ -16,4 +16,14 @@ class Roomrequest extends Model
      */
     protected $fillable = [
         'student_id', 'request_room', 'comment', 'type'];
+
+
+        public function user()
+        {
+            return $this->belongsTo(User::class,'student_id');
+        }
+        public function room()
+        {
+            return $this->belongsTo(Room::class, 'request_room');
+        }
 }

@@ -59,7 +59,7 @@
                               tracking-wider
                             "
                           >
-                            Room
+                            Room Name
                           </th>
                           <th
                             scope="col"
@@ -75,7 +75,6 @@
                           >
                             Status
                           </th>
-
                           <th
                             scope="col"
                             class="
@@ -88,20 +87,43 @@
                               tracking-wider
                             "
                           >
-                            <span class="sr-only">Charge</span>
+                            <span class="sr-only">Status</span>
+                          </th>
+                          <th
+                            scope="col"
+                            class="
+                              px-6
+                              py-3
+                              text-left text-xs
+                              font-medium
+                              text-gray-500
+                              uppercase
+                              tracking-wider
+                            "
+                          >
+                            <span class="sr-only">Delete</span>
                           </th>
                         </tr>
                       </thead>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Derya
-                                </div>
-                              </div>
-                            </div>
+                      <tbody>
+                        <tr
+                          v-for="(person, personIdx) in payments"
+                          :key="person.id"
+                          :class="
+                            personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                          "
+                        >
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm
+                              font-medium
+                              text-gray-900
+                            "
+                          >
+                            {{ person.user.name }}
                           </td>
                           <td
                             class="
@@ -111,9 +133,9 @@
                               text-sm text-gray-500
                             "
                           >
-                            Room 5
+                            {{ person.room.name }}
                           </td>
-                          <td
+                           <td
                             class="
                               px-6
                               py-4
@@ -121,75 +143,50 @@
                               text-sm text-gray-500
                             "
                           >
-                            Payment Successful
+                            {{ person.status }}
                           </td>
-
                           <td
                             class="
                               px-6
                               py-4
                               whitespace-nowrap
-                              text-sm text-gray-500
+                              text-right text-sm
+                              font-medium
                             "
                           >
-                            <a
-                              href="#"
+                            <button v-show="person.status=='Not Charged'"
                               class="text-indigo-600 hover:text-indigo-900"
-                            ></a>
-                          </td>
-                        </tr>
-
-                        <!-- More people... -->
-                      </tbody>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                              <div class="ml-4">
-                                <div class="text-sm font-medium text-gray-900">
-                                  Derya
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            Room 5
-                          </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            Payment Not Charged
-                          </td>
-
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                            <a
-                              href="#"
-                              class="text-indigo-600 hover:text-indigo-900"
-                              >Charge</a
                             >
+                              Charge
+                            </button>
+                            <div disabled v-show="person.status=='Successful'"
+                              class="text-green-600"
+                            >
+                              Payment Successful
+                            </div>
+                            <div disabled v-show="person.status=='Waiting'"
+                              class="text-yellow-600"
+                            >
+                              Payment Waiting
+                            </div>
+                          </td>
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-right text-sm
+                              font-medium
+                            "
+                          >
+                            <button
+                              @click="deleteRow(person)"
+                              class="text-indigo-600 hover:text-indigo-900"
+                            >
+                              Delete
+                            </button>
                           </td>
                         </tr>
-
-                        <!-- More people... -->
                       </tbody>
                     </table>
                   </div>
@@ -215,14 +212,18 @@ const people = [
   // More people...
 ];
 export default defineComponent({
+  props: ["payments"],
   components: {
     AppLayout,
     Welcome,
   },
-  setup() {
+  data() {
     return {
       people,
     };
   },
+  methods: {
+
+  }
 });
 </script>

@@ -63,6 +63,11 @@ class User extends Authenticatable
 
     public function rooms()
     {
-        return $this->belongsToMany(Room::class);
+        return $this->belongsToMany(Room::class,'studentsinrooms','student_id');
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class,'student_id');
     }
 }

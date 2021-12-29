@@ -4206,6 +4206,10 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(3, 84, 63, var(--tw-text-opacity));
 }
+.text-yellow-600 {
+	--tw-text-opacity: 1;
+	color: rgba(159, 88, 10, var(--tw-text-opacity));
+}
 .text-teal-900 {
 	--tw-text-opacity: 1;
 	color: rgba(1, 68, 81, var(--tw-text-opacity));

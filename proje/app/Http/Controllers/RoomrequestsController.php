@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Roomrequest;
+use App\Models\Room;
+
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 // use Illuminate\Support\Facades\Validator;
@@ -14,8 +16,9 @@ class RoomrequestsController extends Controller
      */
     public function index()
     {
-        return Inertia::render('roomrequests', [
-            'roomrequests' => Roomrequest::all()
+        return Inertia::render('RoomRequests', [
+            'roomrequests' => Roomrequest::with('room', 'user')->get()->toArray(),
+            'rooms' => Room::withCount('users')->get()->toArray(),
         ]);
     }
 

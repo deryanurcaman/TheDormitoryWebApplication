@@ -125,8 +125,8 @@
                         rounded-md
                       "
                     >
-                      <option :value="person.id" v-for="(person) in rooms"
-                          :key="person.id">{{ person.name }}</option>
+                      <option  v-show="person.occupancy!=0" :value="person.id" v-for="(person) in rooms.filter(x=>x.users_count<x.capacity)"
+                          :key="person.id">{{ person.name }}  {{ person.user_count }} {{ person }}</option>
                     </select>
                   </div>
                 </div>

@@ -96,7 +96,7 @@
                               text-gray-900
                             "
                           >
-                            {{ person.student_id }}
+                            {{ person.user.name }}
                           </td>
                           <td
                             class="
@@ -106,7 +106,7 @@
                               text-sm text-gray-500
                             "
                           >
-                            {{ person.room_id }} 
+                            {{ person.room.name }}
                           </td>
                           <td
                             class="
@@ -253,14 +253,12 @@
                       <tbody>
                         <tr
                           v-for="(person, personIdx) in roomrequests"
-                          :v-model="form.student_id=person.student_id"
                           :key="person.id"
                           :class="
                             personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
                           "
                         >
                           <td
-                          :v-model="form.room_id=person.request_room"
                             class="
                               px-6
                               py-4
@@ -282,8 +280,7 @@
                               text-gray-900
                             "
                           >
-                            {{ person.student_id }}
-                            
+                            {{ person.user.name }}
                           </td>
                           <td
                             class="
@@ -293,7 +290,7 @@
                               text-sm text-gray-500
                             "
                           >
-                            {{ person.request_room }} 
+                            {{ person.room.name }}
                           </td>
                           <td
                             class="
@@ -303,7 +300,7 @@
                               text-sm text-gray-500
                             "
                           >
-                            {{ person.comment }} 
+                            {{ person.comment }}
                           </td>
                           <td
                             class="
@@ -315,12 +312,20 @@
                             "
                           >
                             <button
-                              v-on:click="accept"
-                              @click="acceptDeleteRow(person)"
+                              v-show="person.type == 'New Apply'"
+                              v-on:click="accept(person)"
                               type="button"
                               class="text-indigo-600 hover:text-indigo-900"
                             >
                               Accept
+                            </button>
+                            <button
+                              v-show="person.type == 'Change Request'"
+                              v-on:click="accept(person)"
+                              type="button"
+                              class="text-indigo-600 hover:text-indigo-900"
+                            >
+                              Change
                             </button>
                           </td>
                           <td
@@ -358,9 +363,7 @@ import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
 
-
 export default defineComponent({
-
   props: ["studentsinrooms", "roomrequests"],
   components: {
     AppLayout,
@@ -370,14 +373,25 @@ export default defineComponent({
     return {
       form: this.$inertia.form({
         student_id: "",
-        room_id: this.$page.props.user.id,
+        room_id: "",
+        status:"",
+        withPayment:"",
       }),
     };
   },
   methods: {
-    accept: function () {
-      this.form.post(this.route("studentsinrooms.store"));
-      this.reset();
+    accept(person) {
+      var form = this.$inertia.form({
+        student_id: "",
+        room_id: "",
+        status:"",
+        withPayment:"",
+      })
+      form.student_id = person.student_id;
+      form.room_id = person.request_room;
+      form.status = "Not Charged";
+      form.withPayment = true;
+      form.post(this.route("studentsinrooms.store"));
     },
     deleteRow: function (data) {
       if (!confirm("Are you sure want to remove?")) return;
@@ -390,7 +404,7 @@ export default defineComponent({
       this.$inertia.post("/roomrequests/" + data.id, data);
       this.reset();
     },
-    acceptDeleteRow: function (data) {
+    acceptDeleteRow(data) {
       data._method = "DELETE";
       this.$inertia.post("/roomrequests/" + data.id, data);
       this.reset();
@@ -408,7 +422,7 @@ export default defineComponent({
     },
     update: function (data) {
       data._method = "PUT";
-      this.$inertia.post("/news/" + data.id, data);
+      this.$inertia.post("/studentsinrooms/" + data.id, data);
       this.reset();
       this.closeModal();
     },

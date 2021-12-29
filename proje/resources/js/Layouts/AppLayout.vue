@@ -34,7 +34,7 @@
                                 </jet-nav-link>
                             </div>
                             <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('roomrequests')" :active="route().current('roomrequests')">
+                                <jet-nav-link :href="route('roomrequests.index')" :active="route().current('roomrequests.index')">
                                     Room Request
                                 </jet-nav-link>
                             </div>
@@ -59,12 +59,12 @@
                                 </jet-nav-link>
                             </div>
                             <div v-if="$page.props.user.role == 'personnel'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('studentsinrooms')" :active="route().current('studentsinrooms')">
+                                <jet-nav-link :href="route('studentsinrooms.index')" :active="route().current('studentsinrooms.index')">
                                     Students In Rooms
                                 </jet-nav-link>
                             </div>
                             <div v-if="$page.props.user.role == 'personnel'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('payments')" :active="route().current('payments')">
+                                <jet-nav-link :href="route('payments.index')" :active="route().current('payments.index')">
                                     Payments
                                 </jet-nav-link>
                             </div>

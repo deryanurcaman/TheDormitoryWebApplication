@@ -24040,12 +24040,14 @@ __webpack_require__.r(__webpack_exports__);
         student_id: "",
         room_id: "",
         status: "",
-        withPayment: ""
+        withPayment: "",
+        did: ""
       });
       form.student_id = person.student_id;
       form.room_id = person.request_room;
       form.status = "Not Charged";
       form.withPayment = true;
+      form.did = person.id;
       form.post(this.route("studentsinrooms.store"));
     },
     deleteRow: function deleteRow(data) {

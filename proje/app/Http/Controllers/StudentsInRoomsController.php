@@ -58,6 +58,10 @@ class StudentsInRoomsController extends Controller
             $payments->save();
         }
 
+        if ($request->has('did')) {
+            Roomrequest::find($request->input('did'))->delete();
+        }
+
         return redirect()->back();
     }
 

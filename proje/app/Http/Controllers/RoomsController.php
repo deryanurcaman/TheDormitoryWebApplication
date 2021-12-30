@@ -36,13 +36,11 @@ class RoomsController extends Controller
             'name' => 'required',
             'capacity' => 'required',
             'fee' => 'required',
-            'occupancy' => 'required',
         ]);
 
         $room = new Room();
         $room->name = $request->name;
         $room->capacity = $request->capacity;
-        $room->occupancy = $request->occupancy;
         $room->fee = $request->fee;
         $room->save();
 
@@ -74,7 +72,6 @@ class RoomsController extends Controller
             'name' => ['required'],
             'capacity' => ['required'],
             'fee' => ['required'],
-            'occupancy' => ['required'],
         ])->validate();
   
         if ($request->has('id')) {

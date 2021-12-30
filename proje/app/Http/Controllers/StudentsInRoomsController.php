@@ -107,7 +107,6 @@ class StudentsInRoomsController extends Controller
             $stInRooms->delete();
 
             $room = Room::where('id',$stInRooms->room_id)->withCount('users')->first();
-            $room->occupancy = $room->users_count;
             $room->save();
             return redirect()->back();
         }

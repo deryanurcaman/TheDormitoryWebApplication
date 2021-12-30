@@ -2,7 +2,7 @@
   <app-layout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Share News
+        Share Announcements
       </h2>
     </template>
 
@@ -38,10 +38,10 @@
                                 text-gray-900
                               "
                             >
-                              Add A New News
+                              Add A New Announcement
                             </h3>
                             <p class="mt-1 text-sm text-gray-500">
-                              You can add a new news here.
+                              You can add a new announcement here.
                             </p>
                           </div>
 
@@ -171,9 +171,9 @@
     <div class="py-12">
       <!-- <h2 class=" mx-auto text-gray-700">DENEME</h2> -->
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <h1 class="text-lg leading-6 font-medium text-gray-900">All News</h1>
+        <h1 class="text-lg leading-6 font-medium text-gray-900">All Announcements</h1>
         <p class="mt-1 text-sm text-gray-500 mb-4">
-          You can see all news here.
+          You can see all announcements here.
         </p>
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
           <!-- This example requires Tailwind CSS v2.0+ -->

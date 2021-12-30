@@ -50,7 +50,7 @@
                             </div>
                             <div v-if="$page.props.user.role == 'personnel'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('sharenews')" :active="route().current('sharenews')">
-                                    Share News
+                                    Share Announcements
                                 </jet-nav-link>
                             </div>
                             <div v-if="$page.props.user.role == 'personnel'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

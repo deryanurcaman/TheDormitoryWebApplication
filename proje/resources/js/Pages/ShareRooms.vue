@@ -125,42 +125,7 @@
                                 />
                               </div>
                             </div>
-                            <div class="sm:col-span-4">
-                              <label
-                                for="occupancy"
-                                class="block text-sm font-medium text-gray-700"
-                              >
-                                Occupancy
-                              </label>
-                              <div
-                                class="
-                                  mt-1
-                                  flex
-                                  rounded-md
-                                  shadow-sm
-                                  text-gray-700
-                                "
-                              >
-                                <input
-                                  required
-                                  v-model="form.occupancy"
-                                  type="number"
-                                  name="occupancy"
-                                  id="occupancy"
-                                  class="
-                                    flex-1
-                                    focus:ring-indigo-500
-                                    focus:border-indigo-500
-                                    block
-                                    w-full
-                                    min-w-0
-                                    rounded-none rounded-r-md
-                                    sm:text-sm
-                                    border-gray-300
-                                  "
-                                />
-                              </div>
-                            </div>
+                            
                             <div class="sm:col-span-4">
                               <label
                                 for="fee"
@@ -320,31 +285,7 @@
                       />
                       <!-- <div v-if="$page.errors.title" class="text-red-500">{{ $.errors.title[0] }}</div> -->
                     </div>
-                    <div class="mb-4">
-                      <label
-                        for="exampleFormControlInput2"
-                        class="block text-gray-700 text-sm font-bold mb-2"
-                        >Occupancy:</label
-                      >
-                      <textarea
-                        class="
-                          shadow
-                          appearance-none
-                          border
-                          rounded
-                          w-full
-                          py-2
-                          px-3
-                          text-gray-700
-                          leading-tight
-                          focus:outline-none focus:shadow-outline
-                        "
-                        id="exampleFormControlInput2"
-                        v-model="form.occupancy"
-                        placeholder="Enter Occupancy"
-                      ></textarea>
-                      <!-- <div v-if="$page.errors.body" class="text-red-500">{{ $page.errors.body[0] }}</div> -->
-                    </div>
+                    
                     <div class="mb-4">
                       <label
                         for="exampleFormControlInput2"
@@ -526,20 +467,7 @@
                           >
                             Fee
                           </th>
-                          <th
-                            scope="col"
-                            class="
-                              px-6
-                              py-3
-                              text-left text-xs
-                              font-medium
-                              text-gray-500
-                              uppercase
-                              tracking-wider
-                            "
-                          >
-                            Occupancy
-                          </th>
+                          
                           <th
                             scope="col"
                             class="
@@ -610,16 +538,7 @@
                           >
                             {{ person.fee }} $
                           </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-sm text-gray-500
-                            "
-                          >
-                          {{ person.occupancy }} empty spot
-                          </td>
+                          
                           <td
                             class="
                               px-6
@@ -690,7 +609,6 @@ export default defineComponent({
         name: "",
         capacity: "",
         fee: "",
-        occupancy:""
       }),
       editMode: false,
       isOpen: false,

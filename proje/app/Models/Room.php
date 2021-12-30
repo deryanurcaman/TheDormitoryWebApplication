@@ -16,7 +16,7 @@ class Room extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'fee', 'occupancy'
+        'name', 'description', 'fee',
     ];
 
     public function users()

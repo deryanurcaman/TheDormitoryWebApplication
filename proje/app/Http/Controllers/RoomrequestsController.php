@@ -2,6 +2,9 @@
 namespace App\Http\Controllers;
 use App\Models\Roomrequest;
 use App\Models\Room;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;

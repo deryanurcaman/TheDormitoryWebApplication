@@ -81,9 +81,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/posts', function () {
 })->name('posts');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/payments', function () {
-    return Inertia::render('Payments');
-})->name('payments');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/payments', function () {
+//     return Inertia::render('Payments');
+// })->name('payments');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/personnelmessages', function () {
     return Inertia::render('PersonnelMessages');
@@ -97,7 +97,7 @@ Route::resource('rooms', 'App\Http\Controllers\RoomsController');
 
 Route::resource('messages', 'App\Http\Controllers\MessagesController'); //bunu mutlaka ekle
 
-Route::resource('personnelmessages', 'App\Http\Controllers\PersonnelMessagesController'); //bunu mutlaka ekle
+// Route::resource('personnelmessages', 'App\Http\Controllers\PersonnelMessagesController'); //bunu mutlaka ekle
 
 Route::resource('studentsinrooms', 'App\Http\Controllers\StudentsInRoomsController'); //bunu mutlaka ekle
 

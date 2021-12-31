@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+
 
 class PaymentsController extends Controller
 {
@@ -28,6 +31,7 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->con);
         $this->validate($request, [
             'student_id' => 'required',
             'room_id' => 'required',
@@ -51,7 +55,7 @@ class PaymentsController extends Controller
      */
     public function show($id)
     {
-        return Payment::find($id); 
+        return Payment::find($id);
     }
 
     /**
@@ -63,20 +67,34 @@ class PaymentsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $this->validate($request, [
-            'student_id' => 'required',
-            'room_id' => 'required',
             'status' => 'required'
         ]);
-
         $payments = Payment::find($id);
-        $payments->student_id = $request->student_id;
-        $payments->room_id = $request->room_id;
-        $payments->status = $request->status;
-        $payments->save();
+        if($request->con)
+            $payments->status = "Waiting";
 
-        return response('Succesfully updated the message', 200);
+        else{
+            $payments->status ="Successful";
+        }
+        $payments->save();
+        return redirect()->back();
     }
+
+    // public function update(Request $request, $id)
+    // {
+    //     error_log("updateN e girdi");
+    //     $this->validate($request, [
+    //         'status' => 'required'
+    //     ]);
+
+    //     $payments = Payment::find($id);
+    //     $payments->status = "Successful";
+    //     $payments->save();
+
+    //     return redirect()->back();
+    // }
 
     /**
      * Remove the specified resource from storage.

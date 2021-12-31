@@ -321,7 +321,7 @@
                             </button>
                             <button
                               v-show="person.type == 'Change Request'"
-                              v-on:click="accept(person)"
+                              v-on:click="update(person, person.id)"
                               type="button"
                               class="text-indigo-600 hover:text-indigo-900"
                             >
@@ -422,11 +422,12 @@ export default defineComponent({
       this.editMode = true;
       this.openModal();
     },
-    update: function (data) {
+    update: function (data, person_id) {
       data._method = "PUT";
+      data.change = true;
+      data.personid = person_id
+      console.log(data)
       this.$inertia.post("/studentsinrooms/" + data.id, data);
-      this.reset();
-      this.closeModal();
     },
     openModal: function () {
       this.isOpen = true;

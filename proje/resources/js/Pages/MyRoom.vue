@@ -93,7 +93,7 @@
                       v-if="userinfo.payments.length>0"
                         class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"
                       >
-                        <button v-if="userinfo.payments[0].status=='Waiting'"
+                        <button @click="update(userinfo.payments[0])" v-if="userinfo.payments[0].status=='Waiting' "
                           href="#"
                           class="
                             font-medium
@@ -131,7 +131,17 @@ export default defineComponent({
     Welcome,
   },
   data() {
-    return {};
+    return {
+      con: 5,
+    };
+  },
+  methods: {
+    update: function (data) {
+      // console.log(data)
+      data._method = "PUT";
+      data.con = false
+      this.$inertia.post("/payments/" + data.id, data);
+    },
   },
 });
 </script>

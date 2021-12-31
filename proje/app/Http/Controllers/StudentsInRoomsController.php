@@ -21,7 +21,7 @@ class StudentsInRoomsController extends Controller
      */
     public function index()
     {
-        
+
         return Inertia::render('Studentsinrooms', [
             'studentsinrooms' => StudentsInRooms::with('room', 'user')->get()->toArray(),
             'users' => User::all(),
@@ -85,17 +85,27 @@ class StudentsInRoomsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'student_id' => 'required',
-            'room_id' => 'required',
-        ]);
+        if ($request->change) {
+            $roomrequests = Roomrequest::find($id);
+            $studentsinrooms = StudentsInRooms::where('student_id', $roomrequests->student_id)->first();
+            $studentsinrooms->room_id = $roomrequests->request_room;
 
-        $studentsinrooms = StudentsInRooms::find($id);
-        $studentsinrooms->student_id = $request->student_id;
-        $studentsinrooms->room_id = $request->room_id;
+            $roomrequests->delete();
+            
+
+        } else {
+            $this->validate($request, [
+                'student_id' => 'required',
+                'room_id' => 'required',
+            ]);
+            $studentsinrooms = StudentsInRooms::find($id);
+            $studentsinrooms->student_id = $request->student_id;
+            $studentsinrooms->room_id = $request->room_id;
+        }
+
         $studentsinrooms->save();
 
-        return response('Succesfully updated the message', 200);
+        return redirect()->back();
     }
 
     /**
@@ -110,7 +120,7 @@ class StudentsInRoomsController extends Controller
             $stInRooms = StudentsInRooms::find($request->input('id'));
             $stInRooms->delete();
 
-            $room = Room::where('id',$stInRooms->room_id)->withCount('users')->first();
+            $room = Room::where('id', $stInRooms->room_id)->withCount('users')->first();
             $room->save();
             return redirect()->back();
         }

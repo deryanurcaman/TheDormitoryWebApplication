@@ -87,22 +87,10 @@
                               tracking-wider
                             "
                           >
-                            <span class="sr-only">Status</span>
+                            <span>Charge</span>
                           </th>
-                          <th
-                            scope="col"
-                            class="
-                              px-6
-                              py-3
-                              text-left text-xs
-                              font-medium
-                              text-gray-500
-                              uppercase
-                              tracking-wider
-                            "
-                          >
-                            <span class="sr-only">Delete</span>
-                          </th>
+                          
+                        
                         </tr>
                       </thead>
                       <tbody>
@@ -135,7 +123,7 @@
                           >
                             {{ person.room.name }}
                           </td>
-                           <td
+                          <td
                             class="
                               px-6
                               py-4
@@ -150,42 +138,31 @@
                               px-6
                               py-4
                               whitespace-nowrap
-                              text-right text-sm
+                              text-sm
                               font-medium
                             "
                           >
-                            <button v-show="person.status=='Not Charged'"
+                            <button
+                              @click="update(person)"
+                              v-show="person.status == 'Not Charged'"
                               class="text-indigo-600 hover:text-indigo-900"
                             >
                               Charge
                             </button>
-                            <div disabled v-show="person.status=='Successful'"
+                            <div
+                              v-show="person.status == 'Successful'"
                               class="text-green-600"
                             >
                               Payment Successful
                             </div>
-                            <div disabled v-show="person.status=='Waiting'"
+                            <div
+                              v-show="person.status == 'Waiting'"
                               class="text-yellow-600"
                             >
                               Payment Waiting
                             </div>
                           </td>
-                          <td
-                            class="
-                              px-6
-                              py-4
-                              whitespace-nowrap
-                              text-right text-sm
-                              font-medium
-                            "
-                          >
-                            <button
-                              @click="deleteRow(person)"
-                              class="text-indigo-600 hover:text-indigo-900"
-                            >
-                              Delete
-                            </button>
-                          </td>
+                        
                         </tr>
                       </tbody>
                     </table>
@@ -205,12 +182,6 @@ import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
 
-const people = [
-  { name: "News1", title: "Regional Paradigm Technician", date: "10.12.2021" },
-  { name: "News2", title: "Product Directives Officer", date: "13.12.2021" },
-  { name: "News3", title: "Officer Change", date: "08.11.2021" },
-  // More people...
-];
 export default defineComponent({
   props: ["payments"],
   components: {
@@ -219,11 +190,17 @@ export default defineComponent({
   },
   data() {
     return {
-      people,
+      con: 3,
     };
   },
   methods: {
-
-  }
+    update: function (data) {
+      // console.log(data)      
+      data._method = "PUT";
+      data.con = true
+      
+      this.$inertia.post("/payments/" + data.id, data);
+    },
+  },
 });
 </script>

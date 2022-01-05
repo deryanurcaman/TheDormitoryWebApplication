@@ -25,7 +25,7 @@
                             </div>
                             <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link :href="route('news.index')" :active="route().current('news.index')">
-                                    News
+                                    Announcements
                                 </jet-nav-link>
                             </div>
                             <div v-if="$page.props.user.role == 'student'" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

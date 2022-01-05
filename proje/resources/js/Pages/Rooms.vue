@@ -44,6 +44,20 @@
                               tracking-wider
                             "
                           >
+                            #
+                          </th>
+                          <th
+                            scope="col"
+                            class="
+                              px-6
+                              py-3
+                              text-left text-xs
+                              font-medium
+                              text-gray-500
+                              uppercase
+                              tracking-wider
+                            "
+                          >
                             Name
                           </th>
                           <th
@@ -72,9 +86,22 @@
                               tracking-wider
                             "
                           >
-                            Fee
+                            Occupancy
                           </th>
-                         
+                          <th
+                            scope="col"
+                            class="
+                              px-6
+                              py-3
+                              text-left text-xs
+                              font-medium
+                              text-gray-500
+                              uppercase
+                              tracking-wider
+                            "
+                          >
+                            Fee Per Person
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -85,6 +112,18 @@
                             personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
                           "
                         >
+                          <td
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm
+                              font-medium
+                              text-gray-900
+                            "
+                          >
+                            {{ personIdx }}
+                          </td>
                           <td
                             class="
                               px-6
@@ -108,6 +147,50 @@
                             {{ person.capacity }} people
                           </td>
                           <td
+                            v-if="person.users_count / person.capacity == 1"
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm text-gray-500
+                            "
+                          >
+                            <span
+                              class="
+                                px-2
+                                py-1
+                                text-red-800 text-m
+                                font-medium
+                                bg-red-100
+                                rounded-full
+                              "
+                            >
+                              FULL
+                            </span>
+                          </td>
+                          <td
+                            v-if="person.users_count / person.capacity < 1"
+                            class="
+                              px-6
+                              py-4
+                              whitespace-nowrap
+                              text-sm text-gray-500
+                            "
+                          >
+                            <span
+                              class="
+                                px-2
+                                py-1
+                                text-green-800 text-m
+                                font-medium
+                                bg-green-100
+                                rounded-full
+                              "
+                              >{{ person.users_count }} /
+                              {{ person.capacity }} people
+                            </span>
+                          </td>
+                          <td
                             class="
                               px-6
                               py-4
@@ -117,7 +200,6 @@
                           >
                             {{ person.fee }} $
                           </td>
-                          
                         </tr>
                       </tbody>
                     </table>
@@ -146,12 +228,8 @@ export default defineComponent({
     Welcome,
   },
   data() {
-    return {
-      
-    };
+    return {};
   },
-  methods: {
-    
-  },
+  methods: {},
 });
 </script>

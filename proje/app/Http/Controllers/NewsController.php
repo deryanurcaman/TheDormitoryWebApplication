@@ -30,13 +30,11 @@ class NewsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'date' => 'required',
         ]);
 
         $news = new News();
         $news->title = $request->title;
         $news->description = $request->description;
-        $news->date = $request->date;
         $news->save();
 
         return redirect()->back();
@@ -78,13 +76,11 @@ class NewsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'date' => 'required',
         ]);
 
         $news = News::find($id);
         $news->title = $request->title;
         $news->description = $request->description;
-        $news->date = $request->date;
         $news->save();
 
         return response('Succesfully updated the room', 200);

@@ -75,7 +75,7 @@
                                   bg-green-100
                                   rounded-full
                                 "
-                                >{{ person.created_at }}</span
+                                >{{ moment(person.created_at).format("MMMM Do YYYY, h:mm a") }}</span
                               >
                             </dd>
                           </dl>
@@ -209,6 +209,7 @@ import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
 import JetButton from "@/Jetstream/Button.vue";
+import moment from "moment";
 
 export default defineComponent({
   props: ["users", "messages"],
@@ -225,6 +226,7 @@ export default defineComponent({
         receiver: null,
         content: "",
       }),
+      moment: moment
     };
   },
   methods: {

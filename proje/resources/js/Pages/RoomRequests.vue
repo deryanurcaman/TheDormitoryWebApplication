@@ -131,7 +131,11 @@
                         )"
                         :key="person.id"
                       >
-                        {{ person.name }} {{ person.user_count }} {{ person }}
+                        {{ person.name }}  
+                        {{ person.users_count }}
+                        {{ person.capacity }}
+
+                        
                       </option>
                     </select>
                   </div>

@@ -70,7 +70,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/sharenews', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/sharerooms', function () {
     return Inertia::render('ShareRooms',  [
-        'rooms' => Room::all()
+        'rooms' => Room::withCount('users')->get()->toArray(),
     ]);
 })->name('sharerooms');
 

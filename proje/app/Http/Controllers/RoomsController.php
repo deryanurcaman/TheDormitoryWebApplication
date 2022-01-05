@@ -20,8 +20,9 @@ class RoomsController extends Controller
     public function index()
     {
         return Inertia::render('Rooms', [
-            'rooms' => Room::all()
+            'rooms' => Room::withCount('users')->get()->toArray(),
         ]);
+        
     }
 
     /**

@@ -83,36 +83,7 @@
                                 />
                               </div>
                             </div>
-                            <div class="sm:col-span-4">
-                              <label
-                                for="username"
-                                class="block text-sm font-medium text-gray-700"
-                              >
-                                Date
-                              </label>
-                              <div class="mt-1 flex rounded-md shadow-sm">
-                                <input
-                                  required
-                                  v-model="form.date"
-                                  type="text"
-                                  name="username"
-                                  id="username"
-                                  autocomplete="username"
-                                  class="
-                                    flex-1
-                                    focus:ring-indigo-500
-                                    focus:border-indigo-500
-                                    block
-                                    w-full
-                                    min-w-0
-                                    rounded-none rounded-r-md
-                                    sm:text-sm
-                                    border-gray-300
-                                    text-gray-700
-                                  "
-                                />
-                              </div>
-                            </div>
+                            
 
                             <div class="sm:col-span-6">
                               <label
@@ -226,7 +197,7 @@
                         bg-green-100
                         rounded-full
                       "
-                      >{{ person.date }}</span
+                      >{{ moment(person.created_at).format("MMMM Do YYYY, h:mm a") }}</span
                     >
                   </dd>
                   <dt class="sr-only">Role</dt>
@@ -257,6 +228,7 @@ import Welcome from "@/Jetstream/Welcome.vue";
 import "@themesberg/flowbite";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import JetButton from "@/Jetstream/Button.vue";
+import moment from "moment";
 
 
 export default defineComponent({
@@ -275,8 +247,8 @@ export default defineComponent({
       form: this.$inertia.form({
         title: "",
         description: "",
-        date: "",
       }),
+      moment: moment
     };
   },
   methods: {

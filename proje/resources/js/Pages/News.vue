@@ -2,7 +2,7 @@
   <div>
     <app-layout title="Dashboard">
       <template #header>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">News</h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Announcements</h2>
       </template>
 
       <div class="py-12">
@@ -36,7 +36,7 @@
                 <div class="flex-1 flex flex-col p-8">
                   <img
                     class="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
-                    src="https://cdn-icons.flaticon.com/png/512/826/premium/826054.png?token=exp=1640260703~hmac=53bbfcc3ad6f82c2d04031de08083b5c"
+                    src="https://d338t8kmirgyke.cloudfront.net/icons/icon_pngs/000/013/421/original/announcement_4585245.png"
                     alt=""
                   />
                   <h2 class="mt-6 text-gray-900 text-xl font-medium">

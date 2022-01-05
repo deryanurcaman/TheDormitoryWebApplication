@@ -38,10 +38,7 @@
                       <li
                         v-for="person in messages"
                         :key="person.email"
-                        v-show="
-                          $page.props.user.id ==
-                          person.receiver
-                        "
+                        v-show="$page.props.user.id == person.receiver"
                         class="
                           col-span-1
                           flex flex-col
@@ -75,8 +72,22 @@
                                   bg-green-100
                                   rounded-full
                                 "
-                                >{{ moment(person.created_at).format("MMMM Do YYYY, h:mm a") }}</span
+                                >{{
+                                  moment(person.created_at).format(
+                                    "MMMM Do YYYY, h:mm a"
+                                  )
+                                }}</span
                               >
+                            </dd>
+                            <dt class="sr-only">Delete</dt>
+                            <dd class="mt-3">
+                              <jet-button
+                                @click="deleteRow(person)"
+                                :class="{ 'opacity-25': form.processing }"
+                                :disabled="form.processing"
+                              >
+                                Delete
+                              </jet-button>
                             </dd>
                           </dl>
                         </div>
@@ -211,7 +222,6 @@ import Welcome from "@/Jetstream/Welcome.vue";
 import JetButton from "@/Jetstream/Button.vue";
 import moment from "moment";
 
-
 export default defineComponent({
   props: ["users", "messages"],
   components: {
@@ -227,7 +237,7 @@ export default defineComponent({
         receiver: null,
         content: "",
       }),
-      moment: moment
+      moment: moment,
     };
   },
   methods: {
@@ -271,7 +281,7 @@ export default defineComponent({
     deleteRow: function (data) {
       if (!confirm("Are you sure want to remove?")) return;
       data._method = "DELETE";
-      this.$inertia.post("/rooms/" + data.id, data);
+      this.$inertia.post("/messages/" + data.id, data);
       this.reset();
       this.closeModal();
     },

@@ -58,7 +58,7 @@
                           bg-green-100
                           rounded-full
                         "
-                        >{{ person.date }}</span
+                        >{{ moment(person.created_at).format("MMMM Do YYYY, h:mm a") }}</span
                       >
                     </dd>
                   </dl>
@@ -78,14 +78,17 @@
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
+import moment from "moment";
+
 export default defineComponent({
   props: ["news"],
   components: {
     AppLayout,
     Welcome,
   },
-  setup() {
+  data() {
     return {
+      moment: moment
     };
   },
 });

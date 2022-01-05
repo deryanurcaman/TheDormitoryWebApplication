@@ -132,8 +132,8 @@
                         :key="person.id"
                       >
                         {{ person.name }}  
-                        {{ person.users_count }}
-                        {{ person.capacity }}
+                        <!-- {{ person.users_count }}
+                        {{ person.capacity }} -->
 
                         
                       </option>

@@ -111,7 +111,7 @@
                               text-gray-900
                             "
                           >
-                            {{ person.user.name }}
+                            {{ person.user.name }} {{ person.user.surname }}
                           </td>
                           <td
                             class="

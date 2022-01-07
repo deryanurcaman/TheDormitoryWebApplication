@@ -139,7 +139,7 @@ export default defineComponent({
     update: function (data) {
       // console.log(data)
       data._method = "PUT";
-      data.con = false
+      data.cashByHand = true
       this.$inertia.post("/payments/" + data.id, data);
     },
   },

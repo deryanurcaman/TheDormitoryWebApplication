@@ -143,11 +143,18 @@
                             "
                           >
                             <button
-                              @click="update(person)"
+                              @click="update(person, false)"
                               v-show="person.status == 'Not Charged'"
                               class="text-indigo-600 hover:text-indigo-900"
                             >
-                              Charge
+                              Charge |
+                            </button>
+                            <button
+                              @click="update(person, true)"
+                              v-show="person.status == 'Not Charged'"
+                              class="text-indigo-600 hover:text-indigo-900"
+                            >
+                              | Cash in Hand
                             </button>
                             <div
                               v-show="person.status == 'Successful'"
@@ -190,14 +197,13 @@ export default defineComponent({
   },
   data() {
     return {
-      con: 3,
     };
   },
   methods: {
-    update: function (data) {
+    update: function (data, cash) {
       // console.log(data)      
       data._method = "PUT";
-      data.con = true
+      data.cashByHand = cash
       
       this.$inertia.post("/payments/" + data.id, data);
     },

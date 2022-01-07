@@ -72,12 +72,14 @@ class PaymentsController extends Controller
             'status' => 'required'
         ]);
         $payments = Payment::find($id);
-        if($request->con)
+
+        if($request->cashByHand == false)
             $payments->status = "Waiting";
 
-        else{
+        elseif($request->cashByHand)
             $payments->status ="Successful";
-        }
+
+    
         $payments->save();
         return redirect()->back();
     }

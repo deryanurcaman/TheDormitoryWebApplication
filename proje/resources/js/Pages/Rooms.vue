@@ -1,4 +1,5 @@
 <template>
+<!-- frontend part for the rooms page -->
   <div>
     <app-layout title="Dashboard">
       <template #header>
@@ -8,7 +9,6 @@
       <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <!-- This example requires Tailwind CSS v2.0+ -->
             <div class="flex flex-col">
               <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div
@@ -32,7 +32,6 @@
                     <table class="min-w-full divide-y divide-gray-200">
                       <thead class="bg-gray-50">
                         <tr>
-                        
                           <th
                             scope="col"
                             class="
@@ -99,7 +98,6 @@
                             personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'
                           "
                         >
-                          
                           <td
                             class="
                               px-6
@@ -192,6 +190,7 @@
 </template>
 
 <script>
+//javascript part for the rooms
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";

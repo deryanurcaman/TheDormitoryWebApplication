@@ -1,4 +1,5 @@
 <template>
+<!-- frontend part for the personnel messages page -->
   <app-layout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -119,7 +120,7 @@
                     "
                   >
                     <label
-                      for="country"
+                      for="recevier"
                       class="
                         block
                         text-sm
@@ -133,9 +134,9 @@
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <select
                         v-model="form.receiver"
-                        id="country"
-                        name="country"
-                        autocomplete="country-name"
+                        id="recevier"
+                        name="recevier"
+                        autocomplete="recevier-name"
                         class="
                           text-gray-700
                           max-w-lg
@@ -164,7 +165,7 @@
                       </select>
                     </div>
                     <label
-                      for="about"
+                      for="content"
                       class="
                         block
                         text-sm
@@ -178,8 +179,8 @@
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <textarea
                         v-model="form.content"
-                        id="about"
-                        name="about"
+                        id="content"
+                        name="content"
                         rows="3"
                         class="
                           text-gray-700
@@ -216,6 +217,7 @@
 </template>
 
 <script>
+//javascript part for the personnel messages
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
@@ -245,45 +247,18 @@ export default defineComponent({
       this.form.post(this.route("messages.store"));
       this.reset();
     },
-    openModal: function () {
-      this.isOpen = true;
-    },
-    closeModal: function () {
-      this.isOpen = false;
-      this.reset();
-      this.editMode = false;
-    },
     reset: function () {
       this.form = {
-        name: null,
-        description: null,
-        fee: null,
+        sender: null,
+        receiver: null,
+        content: null,
       };
-    },
-    save: function (data) {
-      this.$inertia.post("/rooms", data);
-      this.reset();
-      this.closeModal();
-      this.editMode = false;
-    },
-    edit: function (data) {
-      console.log("edite geldi");
-      this.form = Object.assign({}, data);
-      this.editMode = true;
-      this.openModal();
-    },
-    update: function (data) {
-      data._method = "PUT";
-      this.$inertia.post("/rooms/" + data.id, data);
-      this.reset();
-      this.closeModal();
     },
     deleteRow: function (data) {
       if (!confirm("Are you sure want to remove?")) return;
       data._method = "DELETE";
       this.$inertia.post("/messages/" + data.id, data);
       this.reset();
-      this.closeModal();
     },
   },
 });

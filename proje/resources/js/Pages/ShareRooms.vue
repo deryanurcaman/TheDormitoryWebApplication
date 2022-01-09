@@ -1,4 +1,5 @@
 <template>
+<!-- frontend part for the share rooms page -->
   <app-layout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -207,7 +208,6 @@
             <div class="fixed inset-0 transition-opacity">
               <div class="absolute inset-0 bg-gray-500 opacity-90"></div>
             </div>
-            <!-- This element is to trick the browser into centering the modal contents. -->
             <span
               class="hidden sm:inline-block sm:align-middle sm:h-screen"
             ></span>
@@ -257,7 +257,6 @@
                         placeholder="Enter Name"
                         v-model="form.name"
                       />
-                      <!-- <div v-if="$page.errors.title" class="text-red-500">{{ $.errors.title[0] }}</div> -->
                     </div>
                     <div class="mb-4">
                       <label
@@ -283,7 +282,6 @@
                         placeholder="Enter Capacity"
                         v-model="form.capacity"
                       />
-                      <!-- <div v-if="$page.errors.title" class="text-red-500">{{ $.errors.title[0] }}</div> -->
                     </div>
                     
                     <div class="mb-4">
@@ -309,7 +307,6 @@
                         v-model="form.fee"
                         placeholder="Enter Fee"
                       ></textarea>
-                      <!-- <div v-if="$page.errors.body" class="text-red-500">{{ $page.errors.body[0] }}</div> -->
                     </div>
                   </div>
                 </div>
@@ -645,6 +642,7 @@
 </template>
 
 <script>
+//javascript part for the share rooms
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
@@ -699,7 +697,6 @@ export default defineComponent({
       this.editMode = false;
     },
     edit: function (data) {
-      console.log("edite geldi");
       this.form = Object.assign({}, data);
       this.editMode = true;
       this.openModal();

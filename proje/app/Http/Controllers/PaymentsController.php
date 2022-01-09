@@ -5,10 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Log;
-
-
 class PaymentsController extends Controller
 {
     /**
@@ -83,21 +79,7 @@ class PaymentsController extends Controller
         $payments->save();
         return redirect()->back();
     }
-
-    // public function update(Request $request, $id)
-    // {
-    //     error_log("updateN e girdi");
-    //     $this->validate($request, [
-    //         'status' => 'required'
-    //     ]);
-
-    //     $payments = Payment::find($id);
-    //     $payments->status = "Successful";
-    //     $payments->save();
-
-    //     return redirect()->back();
-    // }
-
+    
     /**
      * Remove the specified resource from storage.
      *

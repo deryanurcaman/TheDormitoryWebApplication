@@ -19,8 +19,11 @@ class Room extends Model
         'name', 'description', 'fee',
     ];
 
+
+    //for the relationship between the tables
+
     public function users()
     {
-        return $this->belongsToMany(User::class,'studentsinrooms','room_id','student_id');
+        return $this->belongsToMany(User::class, 'studentsinrooms', 'room_id', 'student_id');
     }
 }

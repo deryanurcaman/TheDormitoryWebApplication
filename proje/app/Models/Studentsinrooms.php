@@ -19,10 +19,14 @@ class Studentsinrooms extends Model
     protected $fillable = [
         'student_id', 'room_id'
     ];
-    
+
+
+
+    //for the relationship between the tables
+
     public function user()
     {
-        return $this->belongsTo(User::class,'student_id');
+        return $this->belongsTo(User::class, 'student_id');
     }
     public function room()
     {

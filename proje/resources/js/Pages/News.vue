@@ -1,15 +1,16 @@
 <template>
+<!-- frontend part for the news page -->
   <div>
     <app-layout title="Dashboard">
       <template #header>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Announcements</h2>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+          Announcements
+        </h2>
       </template>
 
       <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <!-- This example requires Tailwind CSS v2.0+ -->
-
             <ul
               role="list"
               class="
@@ -58,7 +59,11 @@
                           bg-green-100
                           rounded-full
                         "
-                        >{{ moment(person.created_at).format("MMMM Do YYYY, h:mm a") }}</span
+                        >{{
+                          moment(person.created_at).format(
+                            "MMMM Do YYYY, h:mm a"
+                          )
+                        }}</span
                       >
                     </dd>
                   </dl>
@@ -75,6 +80,7 @@
 </template>
 
 <script>
+//javascript part for the news
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
@@ -88,7 +94,7 @@ export default defineComponent({
   },
   data() {
     return {
-      moment: moment
+      moment: moment,
     };
   },
 });

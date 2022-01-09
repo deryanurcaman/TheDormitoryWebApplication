@@ -1,4 +1,5 @@
 <template>
+<!-- frontend part for the payments page -->
   <app-layout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -147,14 +148,15 @@
                               v-show="person.status == 'Not Charged'"
                               class="text-indigo-600 hover:text-indigo-900"
                             >
-                              Charge |
+                              <div>Charge &nbsp;</div>
                             </button>
                             <button
                               @click="update(person, true)"
                               v-show="person.status == 'Not Charged'"
-                              class="text-indigo-600 hover:text-indigo-900"
+                              class="text-pink-500 hover:text-pink-800"
                             >
-                              | Cash in Hand
+                            <div>Cash in Hand</div>
+                              
                             </button>
                             <div
                               v-show="person.status == 'Successful'"
@@ -185,6 +187,7 @@
 </template>
 
 <script>
+//javascript part for the payments
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
@@ -201,7 +204,6 @@ export default defineComponent({
   },
   methods: {
     update: function (data, cash) {
-      // console.log(data)      
       data._method = "PUT";
       data.cashByHand = cash
       

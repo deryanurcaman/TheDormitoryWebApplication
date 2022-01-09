@@ -1,4 +1,5 @@
 <template>
+<!-- frontend part for the students in rooms page -->
   <app-layout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -359,6 +360,7 @@
 </template>
 
 <script>
+//javascript part for the students in rooms
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
@@ -411,17 +413,6 @@ export default defineComponent({
       this.$inertia.post("/roomrequests/" + data.id, data);
       this.reset();
     },
-    save: function (data) {
-      this.$inertia.post("/news", data);
-      this.reset();
-      this.closeModal();
-      this.editMode = false;
-    },
-    edit: function (data) {
-      this.form = Object.assign({}, data);
-      this.editMode = true;
-      this.openModal();
-    },
     update: function (data, person_id) {
       data._method = "PUT";
       data.change = true;
@@ -429,18 +420,13 @@ export default defineComponent({
       console.log(data)
       this.$inertia.post("/studentsinrooms/" + data.id, data);
     },
-    openModal: function () {
-      this.isOpen = true;
-    },
-    closeModal: function () {
-      this.isOpen = false;
-      this.reset();
-      this.editMode = false;
-    },
     reset: function () {
       this.form = {
-        title: null,
-        body: null,
+        student_id: null,
+        room_id: null,
+        status:null,
+        withPayment:null,
+        did:null
       };
     },
   },

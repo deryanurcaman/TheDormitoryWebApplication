@@ -1,4 +1,5 @@
 <template>
+<!-- frontend part for the room request page -->
   <app-layout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -34,7 +35,7 @@
                   "
                 >
                   <label
-                    for="country"
+                    for="plan"
                     class="
                       block
                       text-sm
@@ -95,7 +96,7 @@
                   "
                 >
                   <label
-                    for="country"
+                    for="requestroom"
                     class="
                       block
                       text-sm
@@ -109,9 +110,9 @@
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <select
                       v-model="form.request_room"
-                      id="country"
-                      name="country"
-                      autocomplete="country-name"
+                      id="requestroom"
+                      name="requestroom"
+                      autocomplete="requestroom-name"
                       class="
                         text-gray-700
                         max-w-lg
@@ -131,11 +132,7 @@
                         )"
                         :key="person.id"
                       >
-                        {{ person.name }}  
-                        <!-- {{ person.users_count }}
-                        {{ person.capacity }} -->
-
-                        
+                        {{ person.name }}
                       </option>
                     </select>
                   </div>
@@ -153,7 +150,7 @@
                   "
                 >
                   <label
-                    for="about"
+                    for="comment"
                     class="
                       block
                       text-sm
@@ -167,8 +164,8 @@
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <textarea
                       v-model="form.comment"
-                      id="about"
-                      name="about"
+                      id="comment"
+                      name="comment"
                       rows="3"
                       class="
                         text-gray-700
@@ -207,6 +204,7 @@
 </template>
 
 <script>
+//javascript part for the room requests
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";

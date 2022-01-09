@@ -1,4 +1,5 @@
 <template>
+<!-- frontend part for the share news page -->
   <app-layout title="Dashboard">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -87,7 +88,7 @@
 
                             <div class="sm:col-span-6">
                               <label
-                                for="about"
+                                for="description"
                                 class="block text-sm font-medium text-gray-700"
                               >
                                 Description
@@ -96,8 +97,8 @@
                                 <textarea
                                   required
                                   v-model="form.description"
-                                  id="about"
-                                  name="about"
+                                  id="description"
+                                  name="description"
                                   rows="3"
                                   class="
                                     shadow-sm
@@ -140,15 +141,12 @@
     </div>
 
     <div class="py-12">
-      <!-- <h2 class=" mx-auto text-gray-700">DENEME</h2> -->
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <h1 class="text-lg leading-6 font-medium text-gray-900">All Announcements</h1>
         <p class="mt-1 text-sm text-gray-500 mb-4">
           You can see all announcements here.
         </p>
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-          <!-- This example requires Tailwind CSS v2.0+ -->
-
           <ul
             role="list"
             class="
@@ -222,6 +220,7 @@
 </template>
 
 <script>
+//javascript part for the share news
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Welcome from "@/Jetstream/Welcome.vue";
@@ -261,37 +260,11 @@ export default defineComponent({
       data._method = "DELETE";
       this.$inertia.post("/news/" + data.id, data);
       this.reset();
-      this.closeModal();
-    },
-    save: function (data) {
-      this.$inertia.post("/news", data);
-      this.reset();
-      this.closeModal();
-      this.editMode = false;
-    },
-    edit: function (data) {
-      this.form = Object.assign({}, data);
-      this.editMode = true;
-      this.openModal();
-    },
-    update: function (data) {
-      data._method = "PUT";
-      this.$inertia.post("/news/" + data.id, data);
-      this.reset();
-      this.closeModal();
-    },
-    openModal: function () {
-      this.isOpen = true;
-    },
-    closeModal: function () {
-      this.isOpen = false;
-      this.reset();
-      this.editMode = false;
     },
     reset: function () {
       this.form = {
         title: null,
-        body: null,
+        description: null,
       };
     },
   },

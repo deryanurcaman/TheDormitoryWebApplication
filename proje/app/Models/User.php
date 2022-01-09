@@ -61,13 +61,16 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+
+    //for the relationship between the tables
+
     public function rooms()
     {
-        return $this->belongsToMany(Room::class,'studentsinrooms','student_id');
+        return $this->belongsToMany(Room::class, 'studentsinrooms', 'student_id');
     }
 
     public function payments()
     {
-        return $this->hasMany(Payment::class,'student_id');
+        return $this->hasMany(Payment::class, 'student_id');
     }
 }

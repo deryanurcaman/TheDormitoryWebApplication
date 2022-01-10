@@ -40,7 +40,7 @@
                       block
                       text-sm
                       font-medium
-                      text-gray-700
+                      text-gray-800
                       sm:mt-px sm:pt-2
                     "
                   >
@@ -54,6 +54,7 @@
                     >
                       <div class="flex items-center h-5">
                         <input
+                          required
                           v-model="form.type"
                           :value="plan.name"
                           :id="plan.id"
@@ -74,11 +75,9 @@
                         <label
                           :for="plan.id"
                           class="font-medium text-gray-700"
-                          >{{ plan.name }}</label
+                          >{{ plan.name }} <br>{{plan.description}}</label
                         >
-                        <p :id="`${plan.id}-description`" class="text-gray-500">
-                          {{ plan.description }}
-                        </p>
+                        
                       </div>
                     </div>
                   </div>
@@ -109,6 +108,7 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <select
+                      required
                       v-model="form.request_room"
                       id="requestroom"
                       name="requestroom"
@@ -163,6 +163,7 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <textarea
+                      required
                       v-model="form.comment"
                       id="comment"
                       name="comment"

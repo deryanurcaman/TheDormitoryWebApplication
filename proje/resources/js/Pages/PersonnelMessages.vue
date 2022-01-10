@@ -23,8 +23,6 @@
                 </div>
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                   <div class="sm:rounded-lg">
-                    <!-- This example requires Tailwind CSS v2.0+ -->
-
                     <ul
                       role="list"
                       class="
@@ -133,6 +131,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <select
+                        required
                         v-model="form.receiver"
                         id="recevier"
                         name="recevier"
@@ -178,6 +177,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <textarea
+                        required
                         v-model="form.content"
                         id="content"
                         name="content"

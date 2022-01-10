@@ -131,6 +131,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <select
+                        required
                         v-model="form.receiver"
                         id="receiver"
                         name="receiver"
@@ -176,6 +177,7 @@
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <textarea
+                        required
                         v-model="form.content"
                         id="content"
                         name="content"

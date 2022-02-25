@@ -31,10 +31,6 @@ npm install vue
 php artisan serve
 ```
 
-```bash
-npm run watch
-```
-
 The project can now be accessed at
 
 ```bash

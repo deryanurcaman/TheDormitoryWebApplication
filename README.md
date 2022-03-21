@@ -1,29 +1,34 @@
 # DormitoryWebApplication
 
-DormitoryWebApplication is a Laravel 8 project that allows administrators and students to easily perform their transactions about the dormitory.
+This is a Laravel 8 project that allows dormitory management and students to easily perform their transactions about the dormitory. This app will act as a platform between students and the dormitory management.
 
-## Installation
+## What can be done with this project?
 
-Before start, please check the official laravel installation guide for server requirements before you start. [Laravel 8 Official Documentation](https://laravel.com/docs/8.x/installation)
+Dormitory Managers can
 
-- Make sure that PHP 8 is installed on your pc. 
-- Make sure that XAMPP is installed on your pc. [XAMPP Installation](http://www.apachefriends.org/xampp.html)
-- Make sure that Node.js is installed on your pc. [Node.js Installation](https://nodejs.org/en/download/)
-- Make sure that Composer is installed and up to last version on your pc. [Composer Installation](https://getcomposer.org/download/)
+- share announcements, news
+- share and edit rooms 
+- place students in suitable rooms 
+- charge dormitory fees from students 
+- send messages 
+
+Students can
+
+- see all announcements
+- see available rooms 
+- apply for an available room 
+- send change request for their current room 
+- pay dorm fee 
+- send messages
 
 
-## Before running the project
-
+## Notes
 - To use Vue.js, make sure that you install Vue.js via npm.
 To install, run the command below in the project terminal.
-
 ```bash
 npm install vue
 ```
-
 - Make sure that all servers is running in XAMPP.
-
-## Running the project
 
 - Run the commands below in the terminal that project locates.
 
@@ -36,6 +41,34 @@ The project can now be accessed at
 ```bash
 http://localhost:8000
 ```
+
+## Gallery
+
+![](proje/readmeassets/1.png)
+
+![](proje/readmeassets/2.png)
+
+![](proje/readmeassets/3.png)
+
+![](proje/readmeassets/4.png)
+
+![](proje/readmeassets/5.png)
+
+![](proje/readmeassets/6.png)
+
+![](proje/readmeassets/7.png)
+
+![](proje/readmeassets/8.png)
+
+![](proje/readmeassets/9.png)
+
+![](proje/readmeassets/10.png)
+
+![](proje/readmeassets/11.png)
+
+![](proje/readmeassets/12.png)
+
+
 
 
 

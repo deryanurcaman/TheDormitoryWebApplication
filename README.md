@@ -1,4 +1,4 @@
-# DormitoryWebApplication
+# The Dormitory Web Application with Laravel Jetstream Inertia
 
 This is a Laravel 8 project that allows dormitory management and students to easily perform their transactions about the dormitory. This app will act as a platform between students and the dormitory management.
 
